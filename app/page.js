@@ -9,7 +9,7 @@ export default function Home() {
   
 
   return (
-    <main className="h-[300vh]  w-full">
+    <main className="h-screen flex items-start  w-full">
       <InfiniteCarousel projects={projects} />
     </main>
   )

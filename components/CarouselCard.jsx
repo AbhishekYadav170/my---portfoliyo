@@ -96,7 +96,7 @@ import TextReveal from "./TextReveal";
 import gsap from "@/libs/gsap";
 
 const CARD_W = 300;
-const CARD_H = 380;
+const CARD_H = 400;
 const SCALE = 1.35;
 
 const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
@@ -148,15 +148,15 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
     >
       {/* Title Panel */}
       <div
-        style={{ bottom: "calc(100% + 3rem)" }}
-        className="absolute left-0 pointer-events-none flex flex-col gap-4"
+        style={{ bottom: "calc(100% + 1.5rem)" }}
+        className="absolute left-0 pointer-events-none flex flex-col gap-[0.8rem]"
       >
         <TextReveal
           ref={numberRef}
           trigger="manual"
           splitBy="chars"
         >
-          <h3 className="text-[1rem] text-[#010101]">
+          <h3 className="text-[1.25rem] text-[#010101]">
             {project.number}
           </h3>
         </TextReveal>
@@ -166,7 +166,7 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
           trigger="manual"
           splitBy="words"
         >
-          <h3 className="text-[1rem] text-[#010101]">
+          <h3 className="text-[1.25rem] text-[#010101]">
             {project.title}
           </h3>
         </TextReveal>
