@@ -96,11 +96,12 @@ import TextReveal from "./TextReveal";
 import gsap from "@/libs/gsap";
 
 const CARD_W = 300;
-const CARD_H = 400;
+const CARD_H = 380;
 const SCALE = 1.35;
 
 const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
   const cardRef = useRef(null);
+  const imgRef = useRef(null);
   const numberRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -114,6 +115,12 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
       ease: "power3.out",
     });
 
+    gsap.to(imgRef.current, {
+      scale: 1,
+      duration: 0.47,
+      ease: "power3.out",
+    });
+
     numberRef.current?.play();
     titleRef.current?.play();
   };
@@ -124,7 +131,13 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
     gsap.to(cardRef.current, {
       width: CARD_W,
       height: CARD_H,
-      duration: 0.24,
+      duration: 0.4,
+      ease: "power3.out",
+    });
+
+    gsap.to(imgRef.current, {
+      scale: 1.6,
+      duration: 0.42,
       ease: "power3.out",
     });
 
@@ -153,20 +166,22 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
       >
         <TextReveal
           ref={numberRef}
+          duration="0.25"
           trigger="manual"
           splitBy="chars"
         >
-          <h3 className="text-[1.25rem] text-[#010101]">
+          <h3 className="text-[1.2rem] text-[#010101]">
             {project.number}
           </h3>
         </TextReveal>
 
         <TextReveal
           ref={titleRef}
+          duration="0.25"
           trigger="manual"
           splitBy="words"
         >
-          <h3 className="text-[1.25rem] text-[#010101]">
+          <h3 className="text-[1.2rem] text-[#010101]">
             {project.title}
           </h3>
         </TextReveal>
@@ -175,9 +190,10 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
       {/* Image */}
       <div className="absolute h-full w-full overflow-hidden">
         <img
+        ref={imgRef}
           src={project.coverImage}
           alt={project.title}
-          className="h-full w-full object-cover"
+          className="h-full scale-[1.6] w-full object-cover"
           style={{
             transformOrigin: "center center",
             userSelect: "none",

@@ -2,6 +2,7 @@
 import useLenis from "@/hooks/useLenis";
 import "./globals.css";
 import SmoothScroller from "@/components/SmoothScroller";
+import Navbar from "@/components/Navbar";
 
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={` h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <Navbar />
         <SmoothScroller>{children}</SmoothScroller>
       </body>
     </html>

@@ -3,7 +3,7 @@ import { useEffect, useRef} from "react";
 import gsap from "gsap";
 
 const CARD_W = 300;
-const CARD_H = 400;
+const CARD_H = 380;
 const SCALE = 1.35;
 const CARD_GAP = 20;
 
@@ -36,7 +36,7 @@ const InfiniteCarousel = ({ projects }) => {
 
   return <div 
     style={{
-      padding: `${TRACK_H * 0.2}px 0 24px`,
+      padding: `${TRACK_H * 0.5}px 0 24px`,
     }}
     className="overflow-hidden">
     <div ref={trackRef} 

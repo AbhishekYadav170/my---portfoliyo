@@ -13,7 +13,7 @@ const TextReveal = forwardRef(
         scrollStart = "top 75%",
         splitBy = "lines",
         duration= 0.67,
-        stagger = 0.085,
+        stagger = 0.12,
         delay =  0,
         ease = "power3.out",
     },
@@ -37,25 +37,39 @@ const TextReveal = forwardRef(
             });
 
             const elements = splitRef.current[splitBy];
+            console.log(elements);
 
             gsap.set(elements, {
-                yPercent: 110,
+                y:100,
+                opacity: 0,
+                //yPercent: 110,
             });
 
             tiRef.current = gsap.timeline({
                 pause: true,
-                defaults: { delay},
+                defaults: { delay, ease,},
             });
 
+            // tiRef.current.to(elements, {
+            //     yPercent: 0,
+            //     opacity: 1,
+            //     duration,
+            //     ease, 
+            //     stagger: {
+            //         each: stagger,
+            //         from: "start",
+            //     },
+            // });
+
             tiRef.current.to(elements, {
-                yPercent: 0,
-                opacity: 1,
-                duration,
-                ease, 
-                stagger: {
-                    each: stagger,
-                    from: "start",
-                },
+                 y: 0,
+                 opacity: 1,
+                 duration: 1,
+                 ease: "power4.out",
+                  stagger: {
+                      each: 0.08,
+                      from: "start",
+                  },
             });
 
             if (trigger === "mount") {

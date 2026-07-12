@@ -1,0 +1,29 @@
+import TextReveal from "./TextReveal";
+
+const Navbar = () => {
+  return (
+    <div className="fixed z-[30] px-12 top-0 left-0 h-[6vh] flex items-center justify-between w-full ">
+      <div className="leftnameSide">
+        <TextReveal spliteBy="chars" stagger={0.04}>
+            <h3 className="text-[1.2rem]">ABHISHEK YADAV</h3>
+        </TextReveal>
+      </div>
+      <div className="rightLinkSide flex gap-[1.6rem]">
+        <TextReveal spliteBy="chars" stagger={0.04}>
+          <h3 className="text-[1.05rem]">Home</h3>
+        </TextReveal>
+        <TextReveal spliteBy="chars" stagger={0.04}>
+          <h3 className="text-[1.1rem]">About</h3>
+        </TextReveal>
+        <TextReveal spliteBy="chars" stagger={0.04}>
+          <h3 className="text-[1.1rem]">Projects</h3>
+        </TextReveal>
+        <TextReveal spliteBy="chars" stagger={0.04}>
+          <h3 className="text-[1.1rem]">Contact</h3>
+        </TextReveal>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
