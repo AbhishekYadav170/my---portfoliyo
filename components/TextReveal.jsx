@@ -37,7 +37,7 @@ const TextReveal = forwardRef(
             });
 
             const elements = splitRef.current[splitBy];
-            console.log(elements);
+            
 
             gsap.set(elements, {
                 y:100,
