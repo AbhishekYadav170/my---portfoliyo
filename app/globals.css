@@ -35,3 +35,54 @@ h2, p, h4{
   animation-play-state: paused;
 
 }
+
+.story-line{
+
+    position:relative;
+
+    display:inline-block;
+
+    transition:
+        transform .55s cubic-bezier(.22,1,.36,1),
+        color .35s ease,
+        opacity .35s ease;
+
+    transform-origin:left center;
+
+    will-change:transform;
+
+}
+
+.story-line:hover{
+
+    transform:translateX(28px) scale(1.02);
+
+    color:#111;
+
+}
+
+.story-line::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-12px;
+
+width:0;
+
+height:2px;
+
+background:#111;
+
+transition:width .45s ease;
+
+}
+
+.story-line:hover::after{
+
+width:100%;
+
+}
