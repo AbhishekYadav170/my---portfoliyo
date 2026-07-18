@@ -3,7 +3,7 @@ import useLenis from "@/hooks/useLenis";
 import "./globals.css";
 import SmoothScroller from "@/components/SmoothScroller";
 import Navbar from "@/components/Navbar";
-
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata = {
   title: "Portfoliyo",
@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={` h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <CustomCursor />
         <Navbar />
         <SmoothScroller>{children}</SmoothScroller>
       </body>

@@ -578,6 +578,9 @@
 
 import { useRef } from "react";
 import gsap, { ScrollTrigger, useGSAP } from "@/libs/gsap";
+import MagneticHover from "@/components/MagneticHover";
+import MouseGlow from "@/components/MouseGlow";
+
 
 const storyLines = [
   "I DON'T BUILD",
@@ -685,209 +688,374 @@ export default function Story() {
 }, { scope: sectionRef });
   return (
 
+    // <section
+    //   ref={sectionRef}
+    //   className="relative h-screen overflow-hidden bg-[#f5f5f5]"
+    // >
+    //   <MouseGlow />
+
+    //   {/* ================= Background ================= */}
+
+    //   <div className="absolute inset-0">
+
+    //     {/* Grid */}
+
+    //     <div
+    //       className="
+    //       absolute
+    //       inset-0
+    //       opacity-[0.03]
+    //       bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
+    //       bg-[size:26px_26px]
+    //       "
+    //     />
+
+    //     {/* Glow */}
+
+    //     <div
+    //       ref={glowRef}
+    //       className="
+    //       absolute
+    //       left-1/2
+    //       top-1/2
+    //       h-[600px]
+    //       w-[600px]
+    //       -translate-x-1/2
+    //       -translate-y-1/2
+    //       rounded-full
+    //       bg-neutral-300/30
+    //       blur-[140px]
+    //       "
+    //     />
+
+    //   </div>
+
+    //   {/* ================= Content ================= */}
+
+    //   <div
+    //     className="
+    //     relative
+    //     z-10
+    //     mx-auto
+    //     flex
+    //     h-full
+    //     max-w-7xl
+    //     flex-col
+    //     justify-center
+    //     px-8
+    //     md:px-16
+    //     "
+    //   >
+
+    //     {/* Header */}
+
+    //     <div className="mb-24 flex items-center gap-8">
+
+    //       <span
+
+    //         ref={titleRef}
+
+    //         className="
+    //         text-xs
+    //         uppercase
+    //         tracking-[0.35em]
+    //         text-neutral-500
+    //         "
+    //       >
+    //         02 / STORY
+
+    //       </span>
+
+    //       <div className="h-px flex-1 bg-neutral-300" />
+
+    //     </div>
+
+    //     {/* Story */}
+
+    //     <div className="space-y-5">
+
+    //       {storyLines.map((line, index) => (
+
+    //         <div
+    //             key={index}
+    //             className="overflow-hidden"
+    //         >
+    //        <MagneticHover strength={35}>
+    //          <h2
+    //             ref={(el) => (lineRefs.current[index] = el)}
+    //             className="
+    //             story-line
+    //             cursor-default
+    //             select-none
+    //             font-extralight
+    //             leading-[0.82]
+    //             tracking-[-0.08em]
+    //             text-[4rem]
+    //             md:text-[6rem]
+    //             lg:text-[8rem]
+    //             xl:text-[9rem]
+    //             2xl:text-[10rem]
+    //            "
+    //         >
+    //            {line}
+    //         </h2>
+    //      </MagneticHover >
+    //    </div>
+    //       ))}
+
+    //     </div>
+
+    //     {/* Bottom */}
+
+    //     <div
+
+    //       ref={philosophyRef}
+
+    //       className="
+    //       mt-24
+    //       grid
+    //       gap-16
+    //       border-t
+    //       border-neutral-300
+    //       pt-10
+    //       lg:grid-cols-2
+    //       "
+    //     >
+    //       <p
+    //         className="
+    //         text-xs
+    //         uppercase
+    //         tracking-[0.35em]
+    //         text-neutral-500
+    //         "
+    //       >
+    //         Philosophy
+
+    //       </p>
+    //       <p
+
+    //         className="
+    //         max-w-xl
+    //         text-lg
+    //         leading-9
+    //         text-neutral-600
+    //         md:text-xl
+    //        "
+    //       >
+    //         I design and develop digital
+    //         experiences that combine
+    //         performance, interaction,
+    //         accessibility and modern motion.
+    //       </p>
+    //     </div>
+    //   </div>
+
+    //   {/* Scroll Hint */}
+
+    //   <div
+    //     className="
+    //     absolute
+    //     bottom-10
+    //     left-1/2
+    //     -translate-x-1/2
+    //     text-xs
+    //     uppercase
+    //     tracking-[0.4em]
+    //     text-neutral-400
+    //     "
+    //   >
+    //     Scroll
+    //   </div>
+    // </section>
+
+
     <section
-      ref={sectionRef}
-      className="relative h-screen overflow-hidden bg-[#f5f5f5]"
-    >
+  ref={sectionRef}
+  className="relative h-screen overflow-hidden bg-[#f5f5f5]"
+>
+  {/* ================= Mouse Glow ================= */}
+  <MouseGlow />
 
-      {/* ================= Background ================= */}
+  {/* ================= Background ================= */}
+  <div className="absolute inset-0 z-0">
 
-      <div className="absolute inset-0">
+    {/* Grid */}
+    <div
+      className="
+      absolute
+      inset-0
+      opacity-[0.03]
+      bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
+      bg-[size:26px_26px]
+      "
+    />
 
-        {/* Grid */}
+    {/* Static Glow */}
+    <div
+      ref={glowRef}
+      className="
+      absolute
+      left-1/2
+      top-1/2
+      h-[600px]
+      w-[600px]
+      -translate-x-1/2
+      -translate-y-1/2
+      rounded-full
+      bg-neutral-300/30
+      blur-[140px]
+      "
+    />
 
-        <div
-          className="
-          absolute
-          inset-0
-          opacity-[0.03]
-          bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
-          bg-[size:26px_26px]
-          "
-        />
+  </div>
 
-        {/* Glow */}
+  {/* ================= Content ================= */}
+  <div
+    className="
+    relative
+    z-20
+    mx-auto
+    flex
+    h-full
+    max-w-[1700px]
+    flex-col
+    justify-center
+    px-8
+    md:px-16
+    "
+  >
 
-        <div
-          ref={glowRef}
-          className="
-          absolute
-          left-1/2
-          top-1/2
-          h-[600px]
-          w-[600px]
-          -translate-x-1/2
-          -translate-y-1/2
-          rounded-full
-          bg-neutral-300/30
-          blur-[140px]
-          "
-        />
+    {/* Header */}
+    <div className="mb-24 flex items-center gap-8">
 
-      </div>
-
-      {/* ================= Content ================= */}
-
-      <div
+      <span
+        ref={titleRef}
         className="
-        relative
-        z-10
-        mx-auto
-        flex
-        h-full
-        max-w-7xl
-        flex-col
-        justify-center
-        px-8
-        md:px-16
-        "
-      >
-
-        {/* Header */}
-
-        <div className="mb-24 flex items-center gap-8">
-
-          <span
-
-            ref={titleRef}
-
-            className="
-            text-xs
-            uppercase
-            tracking-[0.35em]
-            text-neutral-500
-            "
-
-          >
-
-            02 / STORY
-
-          </span>
-
-          <div className="h-px flex-1 bg-neutral-300" />
-
-        </div>
-
-        {/* Story */}
-
-        <div className="space-y-5">
-
-          {storyLines.map((line, index) => (
-
-            <div
-              key={index}
-              className="overflow-hidden"
-            >
-
-              <h2
-
-                ref={(el)=>lineRefs.current[index]=el}
-
-                className="
-                story-line
-                group
-                cursor-default
-                select-none
-font-light
-leading-[0.88]
-tracking-[-0.06em]
-text-[3.5rem]
-md:text-[5rem]
-lg:text-[7rem]
-xl:text-[8rem]
-2xl:text-[9rem]
-transition-all
-duration-500
-"
-
-              >
-
-                {line}
-
-              </h2>
-
-            </div>
-
-          ))}
-
-        </div>
-
-        {/* Bottom */}
-
-        <div
-
-          ref={philosophyRef}
-
-          className="
-          mt-24
-          grid
-          gap-16
-          border-t
-          border-neutral-300
-          pt-10
-          lg:grid-cols-2
-          "
-
-        >
-
-          <p
-
-            className="
-            text-xs
-            uppercase
-            tracking-[0.35em]
-            text-neutral-500
-            "
-
-          >
-
-            Philosophy
-
-          </p>
-
-          <p
-
-            className="
-            max-w-xl
-            text-lg
-            leading-9
-            text-neutral-600
-            md:text-xl
-            "
-
-          >
-
-            I design and develop digital
-            experiences that combine
-            performance, interaction,
-            accessibility and modern motion.
-
-          </p>
-
-        </div>
-
-      </div>
-
-      {/* Scroll Hint */}
-
-      <div
-        className="
-        absolute
-        bottom-10
-        left-1/2
-        -translate-x-1/2
         text-xs
         uppercase
-        tracking-[0.4em]
-        text-neutral-400
+        tracking-[0.35em]
+        text-neutral-500
         "
       >
+        02 / STORY
+      </span>
 
-        Scroll
+      <div className="h-px flex-1 bg-neutral-300" />
 
+    </div>
+
+    {/* Story */}
+    <div className="space-y-1">
+
+      {storyLines.map((line, index) => (
+
+        <div
+          key={index}
+          className="overflow-hidden"
+        >
+          <MagneticHover strength={35}>
+
+            <h2
+              ref={(el) => (lineRefs.current[index] = el)}
+              className="
+              story-line
+              cursor-default
+              select-none
+              font-extralight
+              leading-[0.82]
+              tracking-[-0.08em]
+              text-[4rem]
+              md:text-[6rem]
+              lg:text-[8rem]
+              xl:text-[9rem]
+              2xl:text-[10rem]
+              "
+            >
+              {line}
+            </h2>
+
+          </MagneticHover>
+        </div>
+
+      ))}
+
+    </div>
+
+    {/* Bottom */}
+    <div
+      ref={philosophyRef}
+      className="
+      mt-24
+      grid
+      gap-16
+      border-t
+      border-neutral-300
+      pt-10
+      lg:grid-cols-2
+      "
+    >
+
+      <p
+        className="
+        text-xs
+        uppercase
+        tracking-[0.35em]
+        text-neutral-500
+        "
+      >
+        Philosophy
+      </p>
+
+      <div
+        className="
+        rounded-3xl
+        border
+        border-neutral-300
+        bg-white/40
+        backdrop-blur-md
+        p-8
+        shadow-sm
+        "
+      >
+        <p
+          className="
+          text-lg
+          leading-9
+          text-neutral-600
+          md:text-xl
+          "
+        >
+          I design and develop digital experiences that combine
+          performance, interaction, accessibility and modern motion.
+        </p>
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+  {/* ================= Scroll Hint ================= */}
+  <div
+    className="
+    absolute
+    bottom-10
+    left-1/2
+    z-30
+    -translate-x-1/2
+    text-xs
+    uppercase
+    tracking-[0.4em]
+    text-neutral-400
+    "
+  >
+    <span>Scroll</span>
+
+    <div className="mt-3 flex justify-center animate-bounce text-lg">
+      ↓
+    </div>
+  </div>
+
+</section>
 
   );
 

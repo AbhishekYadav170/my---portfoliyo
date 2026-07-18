@@ -108,20 +108,318 @@
 
 
 
+// "use client";
+
+// export default function Hero() {
+//   return (
+//     <section className="relative min-h-screen bg-[#f5f5f5] text-[#010101] overflow-hidden">
+
+//       <div className="max-w-7xl mx-auto px-8 md:px-16 pt-32 pb-20 h-screen flex flex-col justify-between">
+
+//         {/* Top */}
+
+//         <div className="flex justify-between items-center">
+
+//           <p className="uppercase tracking-[0.35em] text-xs text-neutral-500">
+//             01 / About
+//           </p>
+
+//           <div className="text-right">
+
+//             <p className="text-sm text-neutral-500">
+//               Based in India
+//             </p>
+
+//             <p className="text-green-600 text-sm mt-1">
+//               ● Available for Work
+//             </p>
+
+//           </div>
+
+//         </div>
+
+//         {/* Center */}
+
+//         <div className="grid lg:grid-cols-2 gap-20 items-end">
+
+//           {/* Left */}
+
+//           <div>
+
+//             <p className="uppercase text-neutral-400 tracking-[0.4em] mb-3">
+//               Hello.
+//             </p>
+
+//             <h1 className="font-light leading-[0.88]">
+
+//               <span className="block text-[3.5rem] md:text-[5.5rem] lg:text-[6.5rem]">
+//                 I'm
+//               </span>
+
+//               <span className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+//                 Abhishek
+//               </span>
+
+//               <span className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+//                 Yadav
+//               </span>
+
+//             </h1>
+
+//           </div>
+
+//           {/* Right */}
+
+//           <div className="lg:pb-8">
+
+//             <h2 className="text-3xl md:text-4xl font-light leading-snug">
+
+//               Frontend Engineer
+//               <br />
+
+//               & Creative Developer
+
+//             </h2>
+
+//             <p className="mt-8 text-neutral-600 leading-9 text-lg max-w-md">
+
+//               I create modern web experiences using
+//               React, Next.js, GSAP and
+//               clean user interfaces with smooth
+//               interactions.
+
+//             </p>
+
+//             {/* Skills */}
+
+//             <div className="flex flex-wrap gap-3 mt-10">
+
+//               {[
+//                 "Html",
+//                 "CSS",
+//                 "JavaScript",
+//                 "TypeScript",
+//                 "React.js",
+//                 "Next.js",
+//                 "Express.js",
+//                 "Node.js",
+                
+
+//                 "GSAP",
+//                 "Tailwind",
+//                 "MongoDB",
+//               ].map((skill) => (
+
+//                 <span
+//                   key={skill}
+//                   className="border border-neutral-300 rounded-full px-5 py-2 text-sm hover:bg-black hover:text-white duration-300"
+//                 >
+//                   {skill}
+//                 </span>
+
+//               ))}
+
+//             </div>
+
+//           </div>
+
+//         </div>
+
+//         {/* Bottom */}
+
+//         <div className="flex justify-between items-center border-t border-neutral-300 pt-8">
+
+//           <p className="text-neutral-500">
+
+//             Building beautiful,
+//             interactive and fast web experiences.
+
+//           </p>
+
+//           <div className="flex items-center gap-3">
+
+//             <span className="uppercase tracking-[0.35em] text-xs">
+
+//               Scroll
+
+//             </span>
+
+//             <span className="text-xl">
+//               ↓
+//             </span>
+
+//           </div>
+
+//         </div>
+
+//       </div>
+
+//     </section>
+//   );
+// }
+
+
+
+
+
 "use client";
 
+import { useRef } from "react";
+import gsap, { useGSAP } from "@/libs/gsap";
+
 export default function Hero() {
+
+
+   const heroRef = useRef(null);
+
+   const topRef = useRef(null);
+
+   const titleRef = useRef(null);
+
+   const rightRef = useRef(null);
+ 
+   const bottomRef = useRef(null);
+
+   const glowRef = useRef(null);
+
+   const contentRef = useRef(null);
+
+  
+  useGSAP(() => {
+
+      gsap.from(topRef.current,{
+          y:-40,
+          opacity:0,
+          duration:.8,
+          ease:"power3.out"
+      });
+
+      gsap.from(titleRef.current,{
+          y:120,
+          opacity:0,
+          duration:1.2,
+          ease:"power4.out",
+          delay:.2
+      });
+
+      gsap.from(rightRef.current,{
+          x:80,
+          opacity:0,
+          duration:1,
+          ease:"power4.out",
+          delay:.5
+      });
+
+      gsap.from(bottomRef.current,{
+          y:50,
+          opacity:0,
+          duration:.8,
+          delay:.8
+      });
+
+      gsap.to(glowRef.current,{
+          x:100,
+          y:-60,
+          repeat:-1,
+          yoyo:true,
+          duration:8,
+          ease:"sine.inOut"
+      });
+
+      // Mouse Parallax
+   const move = (e) => {
+
+   const x = (e.clientX / window.innerWidth - 0.5) * 40;
+   const y = (e.clientY / window.innerHeight - 0.5) * 40;
+
+   gsap.to(contentRef.current, {
+    x,
+    y,
+    duration: 1.2,
+    ease: "power3.out",
+    overwrite: true,
+  });
+
+};
+
+window.addEventListener("mousemove", move);
+
+return () => {
+  window.removeEventListener("mousemove", move);
+};
+
+  },{scope:heroRef});
+
+
+
+
+
+
+
   return (
-    <section className="relative min-h-screen bg-[#f5f5f5] text-[#010101] overflow-hidden">
+    <section
+      ref={heroRef}
+      id="home"
+      className="relative min-h-screen overflow-hidden bg-[#f5f5f5]"
+    >
+      {/* Background */}
 
-      <div className="max-w-7xl mx-auto px-8 md:px-16 pt-32 pb-20 h-screen flex flex-col justify-between">
+      <div className="absolute inset-0">
 
+        <div
+          className="
+          absolute
+          inset-0
+          opacity-[0.03]
+          bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
+          bg-[size:24px_24px]
+        "
+        />
+
+        <div
+          ref={glowRef}
+          className="
+          absolute
+          left-1/2
+          top-1/2
+          h-[650px]
+          w-[650px]
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          bg-neutral-300/40
+          blur-[170px]
+        "
+        />
+
+      </div>
+
+      {/* Content */}
+
+      <div
+        ref={contentRef}
+        className="
+        relative
+        z-20
+        mx-auto
+        flex
+        min-h-screen
+        max-w-[1700px]
+        flex-col
+        justify-between
+        px-8
+        py-28
+        md:px-16
+      "
+      >
         {/* Top */}
 
-        <div className="flex justify-between items-center">
+        <div
+         ref={topRef}
+         className="flex items-center justify-between">
 
           <p className="uppercase tracking-[0.35em] text-xs text-neutral-500">
-            01 / About
+            01 / HERO
           </p>
 
           <div className="text-right">
@@ -130,7 +428,7 @@ export default function Hero() {
               Based in India
             </p>
 
-            <p className="text-green-600 text-sm mt-1">
+            <p className="mt-2 text-sm text-green-600">
               ● Available for Work
             </p>
 
@@ -140,27 +438,32 @@ export default function Hero() {
 
         {/* Center */}
 
-        <div className="grid lg:grid-cols-2 gap-20 items-end">
+        <div className="grid items-end gap-24 lg:grid-cols-2">
 
           {/* Left */}
 
-          <div>
+          <div ref={titleRef}>
 
-            <p className="uppercase text-neutral-400 tracking-[0.4em] mb-3">
+            <p className="mb-6 uppercase tracking-[0.4em] text-neutral-400">
               Hello.
             </p>
 
-            <h1 className="font-light leading-[0.88]">
-
-              <span className="block text-[3.5rem] md:text-[5.5rem] lg:text-[6.5rem]">
+            <h1
+              className="
+              font-light
+              leading-[0.88]
+              tracking-[-0.06em]
+            "
+            >
+              <span className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
                 I'm
               </span>
 
-              <span className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+              <span className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
                 Abhishek
               </span>
 
-              <span className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+              <span className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
                 Yadav
               </span>
 
@@ -170,56 +473,28 @@ export default function Hero() {
 
           {/* Right */}
 
-          <div className="lg:pb-8">
+          <div
+           ref={rightRef}
+           className="max-w-xl">
 
-            <h2 className="text-3xl md:text-4xl font-light leading-snug">
+            <h2 className="text-3xl font-light leading-snug md:text-5xl">
 
-              Frontend Engineer
+              Full Stack Developer
+
               <br />
 
               & Creative Developer
 
             </h2>
 
-            <p className="mt-8 text-neutral-600 leading-9 text-lg max-w-md">
+            <p className="mt-8 text-lg leading-9 text-neutral-600">
 
-              I create modern web experiences using
-              React, Next.js, GSAP and
-              clean user interfaces with smooth
-              interactions.
+              I build modern digital experiences using
+              React, Next.js, GSAP and beautiful UI
+              animations focused on performance and
+              user experience.
 
             </p>
-
-            {/* Skills */}
-
-            <div className="flex flex-wrap gap-3 mt-10">
-
-              {[
-                "Html",
-                "CSS",
-                "JavaScript",
-                "TypeScript",
-                "React.js",
-                "Next.js",
-                "Express.js",
-                "Node.js",
-                
-
-                "GSAP",
-                "Tailwind",
-                "MongoDB",
-              ].map((skill) => (
-
-                <span
-                  key={skill}
-                  className="border border-neutral-300 rounded-full px-5 py-2 text-sm hover:bg-black hover:text-white duration-300"
-                >
-                  {skill}
-                </span>
-
-              ))}
-
-            </div>
 
           </div>
 
@@ -227,16 +502,17 @@ export default function Hero() {
 
         {/* Bottom */}
 
-        <div className="flex justify-between items-center border-t border-neutral-300 pt-8">
+        <div
+         ref={bottomRef}
+         className="flex items-center justify-between border-t border-neutral-300 pt-8">
 
           <p className="text-neutral-500">
 
-            Building beautiful,
-            interactive and fast web experiences.
+            Building beautiful digital experiences.
 
           </p>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
 
             <span className="uppercase tracking-[0.35em] text-xs">
 
@@ -245,7 +521,9 @@ export default function Hero() {
             </span>
 
             <span className="text-xl">
+
               ↓
+
             </span>
 
           </div>
@@ -253,7 +531,8 @@ export default function Hero() {
         </div>
 
       </div>
-
     </section>
   );
 }
+
+
