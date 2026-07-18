@@ -266,9 +266,19 @@
 
 import { useRef } from "react";
 import gsap, { useGSAP } from "@/libs/gsap";
+import FloatingTech from "@/components/ui/FloatingTech";
+
+
 
 export default function Hero() {
 
+  const imRef = useRef(null);
+
+  const firstNameRef = useRef(null);
+
+  const lastNameRef = useRef(null);
+
+   const lightRef = useRef(null);
 
    const heroRef = useRef(null);
 
@@ -294,13 +304,16 @@ export default function Hero() {
           ease:"power3.out"
       });
 
-      gsap.from(titleRef.current,{
-          y:120,
+      gsap.from(
+          [imRef.current, firstNameRef.current, lastNameRef.current],
+        {  y:160,
           opacity:0,
-          duration:1.2,
+          stagger:0.18,
+          duration:1.3,
           ease:"power4.out",
-          delay:.2
-      });
+          delay:0.2
+        }
+      );
 
       gsap.from(rightRef.current,{
           x:80,
@@ -325,6 +338,21 @@ export default function Hero() {
           duration:8,
           ease:"sine.inOut"
       });
+      const moveLight = (e) => {
+
+  const rect = heroRef.current.getBoundingClientRect();
+
+  gsap.to(lightRef.current, {
+    x: e.clientX - rect.left - 175,
+    y: e.clientY - rect.top - 175,
+    duration: 0.35,
+    ease: "power3.out",
+    overwrite: true,
+  });
+
+};
+
+      window.addEventListener("mousemove", moveLight);
 
       // Mouse Parallax
    const move = (e) => {
@@ -345,10 +373,13 @@ export default function Hero() {
 window.addEventListener("mousemove", move);
 
 return () => {
+  window.removeEventListener("mousemove", moveLight);
   window.removeEventListener("mousemove", move);
 };
 
-  },{scope:heroRef});
+
+
+},{scope:heroRef});
 
 
 
@@ -392,7 +423,22 @@ return () => {
         "
         />
 
+        <div
+            ref={lightRef}
+            className="
+            absolute
+            h-[350px]
+            w-[350px]
+            rounded-full
+           bg-white/70
+           blur-[120px]
+           pointer-events-none
+           z-10
+           "
+        />
+
       </div>
+      <FloatingTech />
 
       {/* Content */}
 
@@ -455,15 +501,21 @@ return () => {
               tracking-[-0.06em]
             "
             >
-              <span className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+              <span 
+               ref={imRef}
+               className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
                 I'm
               </span>
 
-              <span className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
+              <span 
+              ref={firstNameRef}
+              className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
                 Abhishek
               </span>
 
-              <span className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
+              <span
+              ref={lastNameRef} 
+              className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
                 Yadav
               </span>
 
