@@ -340,15 +340,15 @@ export default function Hero() {
       });
       const moveLight = (e) => {
 
-  const rect = heroRef.current.getBoundingClientRect();
+      const rect = heroRef.current.getBoundingClientRect();
 
-  gsap.to(lightRef.current, {
-    x: e.clientX - rect.left - 175,
-    y: e.clientY - rect.top - 175,
-    duration: 0.35,
-    ease: "power3.out",
-    overwrite: true,
-  });
+      gsap.to(lightRef.current, {
+           x: e.clientX - rect.left - 175,
+          y: e.clientY - rect.top - 175,
+          duration: 0.35,
+          ease: "power3.out",
+          overwrite: true,
+      });
 
 };
 
