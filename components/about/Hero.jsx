@@ -264,10 +264,13 @@
 
 "use client";
 
+
+
 import { useRef } from "react";
 import gsap, { useGSAP } from "@/libs/gsap";
 import FloatingTech from "@/components/ui/FloatingTech";
-
+import Noise from "@/components/ui/Noise";
+import MagneticHover from "@/components/MagneticHover";
 
 
 export default function Hero() {
@@ -548,6 +551,97 @@ return () => {
 
             </p>
 
+            <div className="mt-12 flex flex-wrap gap-5">
+
+              <MagneticHover strength={30}>
+
+                <a
+                     href="#projects"
+                     className="
+                     group
+                     relative
+                     overflow-hidden
+                     rounded-full
+                     border
+                   border-black
+                     px-8
+                     py-4
+                     text-sm
+                     uppercase
+                     tracking-[0.25em]
+                    "
+                  >
+
+                    <span className="relative z-20">
+                         View Projects
+                   </span>
+
+                   <span
+                        className="
+                        absolute
+                        inset-0
+                        origin-left
+                        scale-x-0
+                      bg-black
+                       transition-transform
+                        duration-500
+                         group-hover:scale-x-100
+                        "
+                    />
+
+                    <span
+                       className="
+                       absolute
+                       inset-0
+                       z-30
+                       flex
+                       items-center
+                       justify-center
+                      text-white
+                       opacity-0
+                       transition
+                      duration-500
+                       group-hover:opacity-100
+                      "
+                      >
+                       View Projects
+                 </span>
+
+                </a>
+
+              </MagneticHover>
+
+
+
+  <MagneticHover strength={30}>
+
+    <a
+      href="/resume.pdf"
+      target="_blank"
+      className="
+      rounded-full
+      border
+      border-neutral-300
+      bg-white/60
+      px-8
+      py-4
+      text-sm
+      uppercase
+      tracking-[0.25em]
+      backdrop-blur-md
+      transition-all
+      duration-300
+      hover:bg-black
+      hover:text-white
+      "
+    >
+      Download CV
+    </a>
+
+  </MagneticHover>
+
+</div>
+
           </div>
 
         </div>
@@ -583,6 +677,7 @@ return () => {
         </div>
 
       </div>
+      <Noise />
     </section>
   );
 }
