@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import TextReveal from "./TextReveal"
-import gsap, {useGSAP} from "@/libs/gsap";
+import gsap, {useGSAP, ScrollTrigger} from "@/libs/gsap";
 
 
 const ProjectPage = ({ project }) => {
@@ -11,14 +11,44 @@ const ProjectPage = ({ project }) => {
 
     useGSAP(() => {
 
+        const sections = gsap.utils.toArray("section");
+
         gsap.to(imageRef.current,{
             clipPath:"inset(0 0 0% 0)",
             scale: 1,
             duration:1.6,
             ease: 'expo.out',
-            delay: 0.7,
+            delay: 0.9,
         });
-    }, {scope: containerRef });
+
+        sections.forEach((section,idx )=>{
+            const container = section.children[0];
+
+            gsap.to(container, {
+                rotate:0,
+                ease: "none",
+                scrollTrigger:{
+                    trigger: section,
+                    start: "top bottom",
+                    end: "top 20%",
+                    scrub: true,
+                },
+            });
+
+            if(idx === sections.length-1) return;
+
+
+            ScrollTrigger.create({
+                trigger: section,
+                start: "bottom bottom",
+                end: "bottom top",
+                pin: true,
+                pinSpacing: false,
+            });
+        });
+
+    }, {scope: containerRef },
+ );
 
   return (
    <>
@@ -67,7 +97,7 @@ const ProjectPage = ({ project }) => {
         </section>
         {project.gallery.map((elem, idx) => {
             return (
-              <section key={idx} className="h-screen w-full bg-red-400">
+              <section key={idx} className="h-screen w-full">
                 <div style={{transformOrigin: 'bottom left'}} className="sectionContainer rotate-[30deg] h-full w-full ">
                     <img className="h-full w-full object-cover" src={elem} alt="" />
                 </div>
@@ -75,7 +105,7 @@ const ProjectPage = ({ project }) => {
             );
         })}
         
-        <footer></footer>
+        <footer className="h-screen w-full"></footer>
    </main>
    </>
   )
