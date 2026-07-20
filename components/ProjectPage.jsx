@@ -2,31 +2,42 @@
 
 import { useRef } from "react";
 import TextReveal from "./TextReveal"
-import {useGSAP} from "@/libs/gsap";
+import gsap, {useGSAP} from "@/libs/gsap";
 
 
 const ProjectPage = ({ project }) => {
     const containerRef = useRef(null);
+    const imageRef = useRef(null);
 
     useGSAP(() => {
 
+        gsap.to(imageRef.current,{
+            clipPath:"inset(0 0 0% 0)",
+            scale: 1,
+            duration:1.6,
+            ease: 'expo.out',
+            delay: 0.7,
+        });
     }, {scope: containerRef });
 
   return (
    <>
    <main ref={containerRef}>
-        <section className="h-screen flex w-full pt-[7rem] pb-[4rem] px-[3rem]">
-            <div className="firstSegment h-full w-[15%]">
+        <section className="h-screen  w-full ">
+            <div className="SectionContainer h-full w-full flex pt-[7rem] pb-[4rem] px-[3rem]">
+                <div className="firstSegment h-full w-[15%]">
                 <TextReveal>
                     <h3 className="text-[2rem] font-bold">{project.number}</h3>
                 </TextReveal>
             </div>
             <div className="secondSegment h-[80%]  w-[25%]">
-                <div style={{
-                    clipPath: "inset(100% 0 0 0)",
-                }} className="imagediv h-full w-full ">
+                <div className="imagediv h-full w-full ">
                     <img
-                      className="h-full w-full object-cover"
+                    ref={imageRef}
+                    style={{
+                         clipPath: "inset(0 0 100% 0)",
+                    }}
+                      className="h-full scale-[1.7] w-full object-cover"
                       src={project.coverImage}
                       alt=''
                     />
@@ -52,11 +63,18 @@ const ProjectPage = ({ project }) => {
                     </TextReveal>
                 </div>
             </div>
+            </div>
         </section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
+        {project.gallery.map((elem, idx) => {
+            return (
+              <section key={idx} className="h-screen w-full bg-red-400">
+                <div style={{transformOrigin: 'bottom left'}} className="sectionContainer rotate-[30deg] h-full w-full ">
+                    <img className="h-full w-full object-cover" src={elem} alt="" />
+                </div>
+              </section>
+            );
+        })}
+        
         <footer></footer>
    </main>
    </>
