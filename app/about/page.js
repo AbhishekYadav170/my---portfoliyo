@@ -8,6 +8,8 @@ import Stats from "@/components/about/Stats";
 import Story from "@/components/about/Story";
 import Timeline from "@/components/about/TimeLine";
 import AboutImage from "@/components/AboutImage";
+import Projects from "@/components/Projects";
+
 
 export default function AboutPage() {
   return (
@@ -19,6 +21,7 @@ export default function AboutPage() {
       <Timeline />
       <Stats />
       <Services />
+      <Projects />
       <ContactCTA />
     </main>
   );

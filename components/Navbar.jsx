@@ -44,10 +44,13 @@ const Navbar = () =>{
     left-0
     w-full
     z-[100]
-    backdrop-blur-md
-    bg-white/30
+    backdrop-blur-xl
+    bg-gradient-to-r
+  from-white/70
+  via-white/40
+  to-white/70
     border-b
-    border-neutral-200/60
+    border-neutral-/30
     "
   >
     <div
@@ -72,10 +75,14 @@ const Navbar = () =>{
 
             <h3
               className="
-              text-[1.1rem]
-              tracking-[0.15em]
-              uppercase
-              font-medium
+             text-[1.1rem]
+             tracking-[0.15em]
+             uppercase
+             font-medium
+             bg-gradient-to-r
+          
+          via-neutral-500
+          inline-block
               "
             >
               ABHISHEK YADAV
@@ -100,12 +107,20 @@ const Navbar = () =>{
             <a
               href={`#${item.toLowerCase()}`}
               className="
-              group
-              relative
-              text-[1rem]
+                group
+                relative
+               text-[1rem]
               tracking-wide
               uppercase
               cursor-pointer
+              transition-all
+              duration-500
+              hover:bg-gradient-to-r
+            hover:from-black
+            hover:via-neutral-500
+            hover:to-black
+              hover:bg-clip-text
+              hover:mask-linear-from-neutral-500
               "
             >
 

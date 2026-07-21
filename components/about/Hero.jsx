@@ -267,7 +267,7 @@
 
 
 import { useRef } from "react";
-import gsap, { useGSAP } from "@/libs/gsap";
+import gsap, { useGSAP, SplitText } from "@/libs/gsap";
 import FloatingTech from "@/components/ui/FloatingTech";
 import Noise from "@/components/ui/Noise";
 import MagneticHover from "@/components/MagneticHover";
@@ -290,10 +290,18 @@ export default function Hero() {
    const titleRef = useRef(null);
 
    const rightRef = useRef(null);
+
+   const headingRef = useRef(null);
+
+   const paraRef = useRef(null);
+
+   const btnRef = useRef(null);
  
    const bottomRef = useRef(null);
 
    const glowRef = useRef(null);
+
+   const arrowRef = useRef(null);
 
    const contentRef = useRef(null);
 
@@ -307,16 +315,49 @@ export default function Hero() {
           ease:"power3.out"
       });
 
-      gsap.from(
-          [imRef.current, firstNameRef.current, lastNameRef.current],
-        {  y:160,
-          opacity:0,
-          stagger:0.18,
-          duration:1.3,
-          ease:"power4.out",
-          delay:0.2
-        }
-      );
+      // gsap.from(
+      //     [imRef.current, firstNameRef.current, lastNameRef.current],
+      //   {  y:160,
+      //     opacity:0,
+      //     stagger:0.18,
+      //     duration:1.3,
+      //     ease:"power4.out",
+      //     delay:0.2
+      //   }
+      // );
+
+      const firstSplit = new SplitText(firstNameRef.current,{
+         type:"chars"
+      });
+
+      const lastSplit = new SplitText(lastNameRef.current,{
+        type:"chars"
+      });
+
+    gsap.from(imRef.current,{
+        y:120,
+       opacity:0,
+       duration:.8,
+       delay:.2
+    });
+
+    gsap.from(firstSplit.chars,{
+       y:180,
+       opacity:0,
+       stagger:.03,
+       duration:1,
+       ease:"power4.out",
+       delay:.25
+    });
+
+    gsap.from(lastSplit.chars,{
+       y:180,
+       opacity:0,
+       stagger:.03,
+       duration:1,
+       ease:"power4.out",
+       delay:.45
+    });
 
       gsap.from(rightRef.current,{
           x:80,
@@ -324,6 +365,35 @@ export default function Hero() {
           duration:1,
           ease:"power4.out",
           delay:.5
+      });
+
+      gsap.from(headingRef.current,{
+           x:120,
+           opacity:0,
+           duration:1,
+           delay:.6
+      });
+
+      gsap.from(paraRef.current,{
+         y:40,
+         opacity:0,
+         duration:.8,
+         delay:.9
+      });
+
+      gsap.from(btnRef.current,{
+          y:60,
+         opacity:0,
+         duration:.8,
+         delay:1
+      });
+
+      gsap.to(arrowRef.current,{
+          y:10,
+          repeat:-1,
+          yoyo:true,
+          duration:.8,
+          ease:"power1.inOut"
       });
 
       gsap.from(bottomRef.current,{
@@ -487,7 +557,7 @@ return () => {
 
         {/* Center */}
 
-        <div className="grid items-end gap-24 lg:grid-cols-2">
+        <div className="grid items-center gap-36 lg:grid-cols-2">
 
           {/* Left */}
 
@@ -512,13 +582,13 @@ return () => {
 
               <span 
               ref={firstNameRef}
-              className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
+              className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
                 Abhishek
               </span>
 
               <span
               ref={lastNameRef} 
-              className="block text-[4.5rem] md:text-[7rem] lg:text-[8rem]">
+              className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
                 Yadav
               </span>
 
@@ -532,7 +602,9 @@ return () => {
            ref={rightRef}
            className="max-w-xl">
 
-            <h2 className="text-3xl font-light leading-snug md:text-5xl">
+            <h2
+             ref={headingRef}
+             className="text-3xl font-light leading-snug md:text-5xl">
 
               Full Stack Developer
 
@@ -542,7 +614,9 @@ return () => {
 
             </h2>
 
-            <p className="mt-8 text-lg leading-9 text-neutral-600">
+            <p
+             ref={paraRef}
+             className="mt-8 text-lg leading-9 text-neutral-600">
 
               I build modern digital experiences using
               React, Next.js, GSAP and beautiful UI
@@ -551,7 +625,9 @@ return () => {
 
             </p>
 
-            <div className="mt-12 flex flex-wrap gap-5">
+            <div
+             ref={btnRef}
+             className="mt-12 flex flex-wrap gap-5">
 
               <MagneticHover strength={30}>
 
@@ -666,7 +742,9 @@ return () => {
 
             </span>
 
-            <span className="text-xl">
+            <span
+             ref={arrowRef}
+             className="text-xl">
 
               ↓
 

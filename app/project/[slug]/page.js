@@ -1,4 +1,4 @@
-import ProjectPage from "@/components/ProjectPage";
+import ProjectPage from "@/components/Projects";
 import { projects } from "@/data/projects";
 
 export default async function Page ({params}) {
