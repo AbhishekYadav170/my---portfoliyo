@@ -194,6 +194,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import gsap, { useGSAP } from "@/libs/gsap";
 import MagneticHover from "./MagneticHover";
+import TextReveal from "./TextReveal";
 
 export default function ProjectCard({ project, index }) {
 
@@ -202,6 +203,10 @@ export default function ProjectCard({ project, index }) {
   const overlayRef = useRef(null);
   const numberRef = useRef(null);
   const arrowRef = useRef(null);
+  const titleRef = useRef(null);
+  const tagsRef = useRef([]);
+  const lineRef = useRef(null);
+  const glowRef = useRef(null);
 
   useGSAP(() => {
 
@@ -228,6 +233,28 @@ export default function ProjectCard({ project, index }) {
         trigger: cardRef.current,
         start: "top 85%",
       },
+    });
+
+    gsap.from(lineRef.current, {
+            scaleX: 0,
+            transformOrigin: "left",
+            duration: 1,
+            delay: index * 0.15,
+           scrollTrigger: {
+               trigger: cardRef.current,
+               start: "top 85%",
+            },
+    });
+    gsap.from(tagsRef.current, {
+         y: 20,
+          opacity: 0,
+         stagger: 0.08,
+         duration: 0.5,
+        delay: 0.4,
+       scrollTrigger: {
+         trigger: cardRef.current,
+         start: "top 85%",
+        },
     });
 
   }, { scope: cardRef });
@@ -282,6 +309,26 @@ export default function ProjectCard({ project, index }) {
 
   };
 
+  const move = (e) => {
+     const rect = cardRef.current.getBoundingClientRect();
+
+     const x = e.clientX - rect.left;
+     const y = e.clientY - rect.top;
+
+     gsap.to(glowRef.current, {
+          x,
+          y,
+          duration: 0.5,
+          ease: "power3.out",
+       });
+
+        gsap.to(imageRef.current, {
+             x: (x - rect.width / 2) / 30,
+              y: (y - rect.height / 2) / 30,
+             duration: 0.5,
+        });
+     };
+
 
 
   return (
@@ -294,6 +341,7 @@ export default function ProjectCard({ project, index }) {
           ref={cardRef}
           onMouseEnter={enter}
           onMouseLeave={leave}
+          onMouseMove={move}
           className="
           group
           relative
