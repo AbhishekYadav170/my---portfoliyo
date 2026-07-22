@@ -1,12 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
+:root{
+  --bg:#F8F7F4;
+  --surface:#FFFFFF;
+  --text:#111111;
+  --muted:#6B7280;
+  --border:#E5E2DC;
+
+  --accent:#7C5CFC;
+  --accent-light:#A78BFA;
+}
+
 header{
-    transition:background .4s ease;
+    transition:
+    background .4s ease,
+    backdrop-filter .4s ease,
+    box-shadow .4s ease;
 }
 
 header:hover{
-    background:rgba(255,255,255,.55);
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(24px);
+    box-shadow:0 10px 40px rgba(0,0,0,.04);
 }
 
 
@@ -20,7 +36,13 @@ h2, p, h4{
 
 html,
 body {
-  cursor: none;
+   cursor:none;
+    background:var(--bg);
+    color:var(--text);
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+     background:
+    radial-gradient(circle at top,#ffffff 0%,#F8F7F4 45%,#F3F2EF 100%);
 }
 
 a,
@@ -75,9 +97,9 @@ button,
 
 .story-line:hover{
 
-    transform:translateX(28px) scale(1.02);
-
-    color:#111;
+    transform:translateX(22px) scale(1.015);
+    color:var(--accent);
+     letter-spacing:-0.04em;
 
 }
 
@@ -105,4 +127,54 @@ transition:width .45s ease;
 
 width:100%;
 
+}
+
+::selection{
+    background:#111;
+    color:white;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+    background:linear-gradient(
+        180deg,
+         #DDD5CA,
+       #BEB3A5
+    );
+}
+
+::-webkit-scrollbar-track{
+    background:#F3F2EF;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#CFC8BD;
+    border-radius:999px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#AFA79B;
+}
+
+img{
+    user-select:none;
+    -webkit-user-drag:none;
+    display:block;
+    max-width:100%;
+}
+
+a,
+button
+{
+    transition:all .35s cubic-bezier(.22,1,.36,1);
+}
+img{
+  transition:
+        transform .6s cubic-bezier(.22,1,.36,1),
+        filter .6s cubic-bezier(.22,1,.36,1);
+}
+
+section{
+    position:relative;
+    z-index:1;
 }

@@ -15,7 +15,7 @@ const skills = [
 
 export default function SkillsMarquee() {
   return (
-    <section className="overflow-hidden bg-[#e0a2a2] py-20 text-white">
+    <section className="overflow-hidden bg-[#111111] py-20 text-white">
 
       <div className="relative flex whitespace-nowrap">
 
