@@ -21,7 +21,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="bg-[#010101] text-white py-32">
+    <section className="bg-[#111111] text-white py-32">
 
       <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
 

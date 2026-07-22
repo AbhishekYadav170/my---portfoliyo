@@ -29,7 +29,7 @@ const timeline = [
 
 export default function Timeline() {
   return (
-    <section className="bg-[#f5f5f5] py-32">
+    <section className="bg-[#f8f7f4] py-32">
 
       <div className="mx-auto max-w-7xl px-8 md:px-16 lg:px-24">
 
@@ -54,7 +54,7 @@ export default function Timeline() {
           {timeline.map((item, index) => (
             <div
               key={index}
-              className="grid md:grid-cols-[180px_1fr] gap-10 border-b border-neutral-300 pb-12"
+              className="grid md:grid-cols-[180px_1fr] gap-10 border-b border-[#E5E2DC] pb-12"
             >
               <h3 className="text-3xl md:text-4xl font-light text-neutral-500">
                 {item.year}

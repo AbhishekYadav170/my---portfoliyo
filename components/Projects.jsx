@@ -130,30 +130,54 @@
 
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import TextReveal from "./TextReveal";
 
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-[#f5f5f5] py-32"
+      className="bg-[#f8f7f4] py-40"
     >
       <div className="max-w-[1700px] mx-auto px-8 md:px-16">
 
-        <p className="uppercase tracking-[0.35em] text-xs text-neutral-500">
-          03 / PROJECTS
-        </p>
+        <div className="mb-24 space-y-16">
 
-        <h2
-          className="
-          mt-8
-          text-[5rem]
-          md:text-[7rem]
-          font-light
-          tracking-[-0.08em]
-          "
-        >
-          Selected Work
-        </h2>
+           <div className="flex items-center gap-8">
+
+               <span
+                  className="
+                  text-xs
+                  uppercase
+                  tracking-[0.35em]
+                text-neutral-500
+                  "
+                >
+                  03 / PROJECTS
+              </span>
+
+             <div className="h-px flex-1 bg-neutral-300" />
+
+          </div>
+
+          <TextReveal splitBy="chars" stagger={0.03}>
+
+              <h2
+                className="
+                mt-10
+                text-[4rem]
+                md:text-[6rem]
+                lg:text-[7rem]
+               font-light
+               tracking-[-0.08em]
+              leading-none
+              "
+            >
+               Selected Works
+            </h2>
+
+          </TextReveal>
+
+      </div>
 
         <div className="mt-24">
 

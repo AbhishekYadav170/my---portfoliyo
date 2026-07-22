@@ -20,7 +20,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="bg-[#f5f5f5] py-36">
+    <section className="bg-[#f8f7f4] py-36">
 
       <div className="max-w-7xl mx-auto px-8 md:px-16">
 
@@ -42,7 +42,7 @@ export default function Services() {
 
             <div
               key={item.number}
-              className="group border-t border-neutral-300 pt-10 flex flex-col md:flex-row justify-between gap-8 hover:pl-8 duration-500"
+              className="group border-t border-[#E5E2DC] pt-10 flex flex-col md:flex-row justify-between gap-8 hover:pl-8 duration-500"
             >
 
               <div className="flex gap-10">

@@ -1,32 +1,3 @@
-// import TextReveal from "./TextReveal";
-
-// const Navbar = () => {
-//   return (
-//     <div className="fixed z-[30] px-12 top-0 left-0 h-[6vh] flex items-center justify-between w-full ">
-//       <div className="leftnameSide">
-//         <TextReveal spliteBy="chars" stagger={0.04}>
-//             <h3 className="text-[1.2rem]">ABHISHEK YADAV</h3>
-//         </TextReveal>
-//       </div>
-//       <div className="rightLinkSide flex gap-[1.6rem]">
-//         <TextReveal spliteBy="chars" stagger={0.04}>
-//           <h3 className="text-[1.05rem]">Home</h3>
-//         </TextReveal>
-//         <TextReveal spliteBy="chars" stagger={0.04}>
-//           <h3 className="text-[1.1rem]">About</h3>
-//         </TextReveal>
-//         <TextReveal spliteBy="chars" stagger={0.04}>
-//           <h3 className="text-[1.1rem]">Projects</h3>
-//         </TextReveal>
-//         <TextReveal spliteBy="chars" stagger={0.04}>
-//           <h3 className="text-[1.1rem]">Contact</h3>
-//         </TextReveal>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Navbar
 
 
 
@@ -45,10 +16,11 @@ const Navbar = () =>{
     w-full
     z-[100]
     backdrop-blur-xl
+    shadow-[0_10px_40px_rgba(0,0,0,.05)]
     bg-gradient-to-r
-  from-white/70
-  via-white/40
-  to-white/70
+   from-[#ffffffdd]
+   via-[#ffffff99]
+   to-[#ffffffdd]
     border-b
     border-neutral-/30
     "

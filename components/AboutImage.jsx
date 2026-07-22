@@ -9,7 +9,7 @@ export default function AboutImage() {
       <div className="mx-auto max-w-7xl px-8 md:px-16 lg:px-24">
 
         {/* Top */}
-        <div className="mb-10 flex items-center justify-between border-b border-neutral-300 pb-6">
+        <div className="mb-10 flex items-center justify-between border-b border-[#E5E2DC] pb-6">
 
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
             02 / About Me
