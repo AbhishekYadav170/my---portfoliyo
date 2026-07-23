@@ -12,7 +12,7 @@ export default function AboutImage() {
         <div className="mb-10 flex items-center justify-between border-b border-[#E5E2DC] pb-6">
 
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">
-            02 / About Me
+             About Me
           </p>
 
           <p className="text-sm text-neutral-500">
