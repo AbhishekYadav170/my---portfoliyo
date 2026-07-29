@@ -12,6 +12,16 @@
   --accent-light:#A78BFA;
 }
 
+
+.dark{
+  --bg:#090909;
+  --surface:#151515;
+  --text:#f5f5f5;
+  --muted:#9ca3af;
+  --border:#2a2a2a;
+}
+
+
 header{
     transition:
     background .4s ease,
@@ -34,16 +44,31 @@ h2, p, h4{
   font-family: "Inter", sans-serif;
 }
 
+
 html,
-body {
-   cursor:none;
-    background:var(--bg);
-    color:var(--text);
+body{
+    cursor:none;
     scroll-behavior:smooth;
     overflow-x:hidden;
-     background:
-    radial-gradient(circle at top,#ffffff 0%,#F8F7F4 45%,#F3F2EF 100%);
+
+    background:var(--bg);
+    color:var(--text);
+
+    transition:
+      background .45s ease,
+      color .45s ease;
 }
+
+body{
+    background:
+      radial-gradient(circle at top,#ffffff 0%,#F8F7F4 45%,#F3F2EF 100%);
+}
+
+.dark body{
+    background:
+      radial-gradient(circle at top,#181818 0%,#0f0f0f 45%,#090909 100%);
+}
+
 
 a,
 button,

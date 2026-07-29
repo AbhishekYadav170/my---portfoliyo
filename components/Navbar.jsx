@@ -8,14 +8,26 @@
 import Link from "next/link";
 import TextReveal from "./TextReveal";
 import MagneticHover from "./MagneticHover";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
+
 
 
 
 
 const Navbar = () =>{
+  
+    const { theme, toggleTheme } = useTheme();
+
   return (
   <header
+    style={{
+         background:"var(--surface)",
+         color:"var(--text)",
+         borderColor:"var(--border)"
+    }}
     className="
+   
     fixed
     top-0
     left-0
@@ -133,6 +145,28 @@ const Navbar = () =>{
           </MagneticHover>
 
         ))}
+
+          <button
+             onClick={toggleTheme}
+             className="
+              ml-4
+             h-11
+            w-11
+            rounded-full
+            border
+            border-neutral-300
+            flex
+            items-center
+           justify-center
+           transition-all
+          duration-300
+          hover:scale-110
+         "
+        >
+          {theme === "dark"
+              ? <Sun size={20} />
+             : <Moon size={20} />}
+        </button>
 
       </div>
 
