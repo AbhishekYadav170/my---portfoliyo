@@ -22,6 +22,8 @@ export default function ProjectCard({ project, index }) {
   const lineRef = useRef(null);
   const glowRef = useRef(null);
 
+  tagsRef.current = [];
+
   useGSAP(() => {
 
     // Card Reveal
@@ -49,16 +51,16 @@ export default function ProjectCard({ project, index }) {
       },
     });
 
-    gsap.from(lineRef.current, {
-            scaleX: 0,
-            transformOrigin: "left",
-            duration: 1,
-            delay: index * 0.15,
-           scrollTrigger: {
-               trigger: cardRef.current,
-               start: "top 85%",
-            },
-    });
+    // gsap.from(lineRef.current, {
+    //         scaleX: 0,
+    //         transformOrigin: "left",
+    //         duration: 1,
+    //         delay: index * 0.15,
+    //        scrollTrigger: {
+    //            trigger: cardRef.current,
+    //            start: "top 85%",
+    //         },
+    // });
     gsap.from(tagsRef.current, {
          y: 20,
           opacity: 0,
@@ -129,12 +131,12 @@ export default function ProjectCard({ project, index }) {
      const x = e.clientX - rect.left;
      const y = e.clientY - rect.top;
 
-     gsap.to(glowRef.current, {
-          x,
-          y,
-          duration: 0.5,
-          ease: "power3.out",
-       });
+    //  gsap.to(glowRef.current, {
+    //       x,
+    //       y,
+    //       duration: 0.5,
+    //       ease: "power3.out",
+    //    });
 
         gsap.to(imageRef.current, {
              x: (x - rect.width / 2) / 30,
@@ -270,7 +272,7 @@ export default function ProjectCard({ project, index }) {
                 </h2>
              </TextReveal>
               
-              <TextReveal splite="words" stagger={0.04}>
+              <TextReveal splitBy="words" stagger={0.04}>
                 <p
                   className="
                   mt-5
@@ -297,10 +299,11 @@ export default function ProjectCard({ project, index }) {
 
               <div className="mt-10 flex flex-wrap gap-4">
 
-                {project.tags.map((tag) => (
+                {project.tags.map((tag, i) => (
 
                   <span
-                    key={tag}
+                    ref={(el) => (tagsRef.current[i] = el)}
+                    key={i}
                     className="
                     rounded-full
                     border

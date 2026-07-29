@@ -1,123 +1,127 @@
-'use client'
+"use client";
 
+//import Image from "next/image";
+//import Link from "next/link";
 import { useRef } from "react";
-import TextReveal from "./TextReveal"
-import gsap, {useGSAP, ScrollTrigger} from "@/libs/gsap";
-import useViewTransitions from "@/hooks/useViewTransitions";
+import gsap, { useGSAP } from "@/libs/gsap";
 
-const ProjectPage = ({ project, nextProject }) => {
-    const containerRef = useRef(null);
-    const imageRef = useRef(null);
+export default function ProjectPage({ project, nextProject }) {
+  const heroRef = useRef(null);
+  const imageRef = useRef(null);
 
-    useGSAP(() => {
+  useGSAP(() => {
+    gsap.from(heroRef.current, {
+      opacity: 0,
+      y: 80,
+      duration: 1.2,
+      ease: "power4.out",
+    });
 
-        const sections = gsap.utils.toArray("section");
-
-        gsap.to(imageRef.current,{
-            clipPath:"inset(0 0 0% 0)",
-            scale: 1,
-            duration:1.6,
-            ease: 'expo.out',
-            delay: 0.9,
-        });
-
-        sections.forEach((section,idx )=>{
-            const container = section.children[0];
-
-            gsap.to(container, {
-                rotate:0,
-                ease: "none",
-                scrollTrigger:{
-                    trigger: section,
-                    start: "top bottom",
-                    end: "top 20%",
-                    scrub: true,
-                },
-            });
-
-            if(idx === sections.length-1) return;
-
-
-            ScrollTrigger.create({
-                trigger: section,
-                start: "bottom bottom",
-                end: "bottom top",
-                pin: true,
-                pinSpacing: false,
-            });
-        });
-
-    }, {scope: containerRef },
-  );
-
-    const {navigateTo} = useViewTransitions();
-
-    const handleClick = ()=>{
-       navigateTo(`/project/${nextProject.slug}`);
-    }
+    gsap.from(imageRef.current, {
+      scale: 1.2,
+      opacity: 0,
+      duration: 1.6,
+      ease: "power3.out",
+    });
+  }, []);
 
   return (
-   <>
-   <main ref={containerRef}>
-        <section className="h-screen  w-full ">
-            <div className="SectionContainer h-full w-full flex pt-[7rem] pb-[4rem] px-[3rem]">
-                <div className="firstSegment h-full w-[15%]">
-                <TextReveal>
-                    <h3 className="text-[2rem] font-bold">{project.number}</h3>
-                </TextReveal>
-            </div>
-            <div className="secondSegment h-[80%]  w-[25%]">
-                <div className="imagediv h-full w-full ">
-                    <img
-                    ref={imageRef}
-                    style={{
-                         clipPath: "inset(0 0 100% 0)",
-                    }}
-                      className="h-full scale-[1.7] w-full object-cover"
-                      src={project.coverImage}
-                      alt=''
-                    />
-                </div>
-            </div>
-            <div className="thirdSegmentdiv p1-[8rem] h-[85%] w-[60%] flex flex-col justify-end">
-                <div className="heading">
-                    <TextReveal delay="0.85" ease='power4.out' splitBy="chars" >
-                        <h1 className="text-[5rem] leading-[1.1]"  >{project.title}</h1>
-                    </TextReveal>
-                </div>
-                <div className="subHeading flex gap-[3rem]">
-                    <TextReveal delay="0.85" splitBy="words" >
-                        <h1 className="text-[2rem]"  >{project.subtitle}</h1>
-                    </TextReveal>
-                    <TextReveal delay="0.85" splitBy="chars" >
-                        <h1 className="text-[2rem]"  >{project.year}</h1>
-                    </TextReveal>
-                </div>
-                <div className="description mt-[2rem]  w-[70%] text-balance">
-                    <TextReveal delay="0.25" splitBy="lines" >
-                        <p className="text-[1.5rem] leading-[1.5]"  >{project.description}</p>
-                    </TextReveal>
-                </div>
-            </div>
-            </div>
-        </section>
-        {project.gallery.map((elem, idx) => {
-            return (
-              <section key={idx} className="h-screen w-full">
-                <div style={{transformOrigin: 'bottom left'}} className="sectionContainer rotate-[30deg] h-full w-full ">
-                    <img className="h-full w-full object-cover" src={elem} alt="" />
-                </div>
-              </section>
-            );
-        })}
-        
-        <footer className="h-screen flex items-center justify-center w-full">
-            <h1>Next Project</h1>
-            <h1 onClick={handleClick} >{nextProject.title}</h1>
-        </footer>
-   </main>
-   </>
-  )
-}
+    <main className="bg-[#f8f7f4] text-[#111]">
 
-export default ProjectPage
+      {/* HERO */}
+
+      <section
+        ref={heroRef}
+        className="relative h-screen flex items-end overflow-hidden"
+      >
+        <img
+          ref={imageRef}
+          src={project.coverImage}
+          alt={project.title}
+           className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-black/45" />
+
+        <div className="relative z-10 w-full max-w-[1700px] mx-auto px-8 md:px-16 pb-24">
+
+          <p className="uppercase tracking-[0.35em] text-white/70 text-sm">
+            {project.number} / Selected Work
+          </p>
+
+          <h1 className="mt-6 text-white text-6xl md:text-8xl lg:text-[9rem] font-light tracking-[-0.08em] leading-none">
+            {project.title}
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-xl text-white/80">
+            {project.subtitle}
+          </p>
+
+        </div>
+      </section>
+
+      {/* INFO */}
+
+      <section className="max-w-[1700px] mx-auto px-8 md:px-16 py-32">
+
+        <div className="grid lg:grid-cols-12 gap-16">
+
+          <div className="lg:col-span-4">
+
+            <p className="text-sm uppercase tracking-[0.35em] text-neutral-500">
+              Project Info
+            </p>
+
+            <div className="mt-10 space-y-8">
+
+              <div>
+                <p className="text-neutral-400">Year</p>
+                <h3 className="text-2xl mt-2">2026</h3>
+              </div>
+
+              <div>
+                <p className="text-neutral-400">Role</p>
+                <h3 className="text-2xl mt-2">
+                  Full Stack Developer
+                </h3>
+              </div>
+
+              <div>
+                <p className="text-neutral-400">Stack</p>
+
+                <div className="flex flex-wrap gap-3 mt-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border rounded-full px-5 py-2"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="lg:col-span-8">
+
+            <h2 className="text-5xl font-light tracking-tight">
+              About the Project
+            </h2>
+
+            <p className="mt-10 text-xl leading-10 text-neutral-600">
+              {project.description}
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  );
+}

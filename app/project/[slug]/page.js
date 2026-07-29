@@ -1,17 +1,42 @@
-import ProjectPage from "@/components/Projects";
+// import ProjectPage from "@/components/ProjectPage";
+// import { projects } from "@/data/projects";
+
+// export default async function Page ({params}) {
+
+//     const {slug} = await params;
+
+//     const index = projects.findIndex((p) => p.slug === slug);
+//     const project = projects[index];
+//     const nextProject = projects[(index + 1) % projects.length];
+
+//     return (
+//        <>
+//        <ProjectPage project={project} nextProject={nextProject} />
+//        </>
+//     );
+// }
+
+
+import ProjectPage from "@/components/ProjectPage";
 import { projects } from "@/data/projects";
+import { notFound } from "next/navigation";
 
-export default async function Page ({params}) {
+export default async function Page({ params }) {
+  const { slug } = await params;
 
-    const {slug} = await params;
+  const index = projects.findIndex((p) => p.slug === slug);
 
-    const index = projects.findIndex((p) => p.slug === slug);
-    const project = projects[index];
-    const nextProject = projects[(index + 1) % projects.length];
+  if (index === -1) {
+    notFound();
+  }
 
-    return (
-       <>
-       <ProjectPage project={project} nextProject={nextProject} />
-       </>
-    );
+  const project = projects[index];
+  const nextProject = projects[(index + 1) % projects.length];
+
+  return (
+    <ProjectPage
+      project={project}
+      nextProject={nextProject}
+    />
+  );
 }

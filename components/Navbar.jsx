@@ -3,8 +3,14 @@
 
 "use client";
 
+
+
+import Link from "next/link";
 import TextReveal from "./TextReveal";
 import MagneticHover from "./MagneticHover";
+
+
+
 
 const Navbar = () =>{
   return (
@@ -41,7 +47,7 @@ const Navbar = () =>{
       {/* Logo */}
 
       <MagneticHover strength={18}>
-        <div className="cursor-pointer">
+        <Link href="/" className="cursor-pointer">
 
           <TextReveal splitBy="chars" stagger={0.03}>
 
@@ -62,22 +68,28 @@ const Navbar = () =>{
 
           </TextReveal>
 
-        </div>
+        </Link>
       </MagneticHover>
 
       {/* Links */}
 
       <div className="flex items-center gap-10">
 
-        {["Home", "About", "Projects", "Contact"].map((item) => (
+        {[
+          {name: "Home", href: "/"},
+          { name: "About", href: "/about" },
+          { name: "Projects", href: "/about#projects" },
+          { name: "Contact", href: "/about#contact" },
+        ].map((item) => (
 
           <MagneticHover
-            key={item}
+            key={item.href}
             strength={20}
           >
 
-            <a
-              href={`#${item.toLowerCase()}`}
+            <Link
+//              href={`#${item.toLowerCase()}`}
+              href={item.href}
               className="
                 group
                 relative
@@ -98,7 +110,7 @@ const Navbar = () =>{
 
               <TextReveal splitBy="chars" stagger={0.02}>
 
-                <span>{item}</span>
+                <span>{item.name}</span>
 
               </TextReveal>
 
@@ -116,7 +128,7 @@ const Navbar = () =>{
                 "
               />
 
-            </a>
+            </Link>
 
           </MagneticHover>
 
