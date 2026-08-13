@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 :root{
@@ -202,4 +202,362 @@ img{
 section{
     position:relative;
     z-index:1;
+}
+
+
+
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 250% 250%;
+  animation: gradientMove 4s ease infinite;
+}
+ 
+
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #ff00cc,
+    #7928ff,
+    #00e5ff,
+    #00ff88,
+    #ffe600,
+    #ff4d00,
+    #ff00cc
+  );
+
+  background-size: 400% 400%;
+  animation: gradientMove 5s ease infinite;
+} 
+  */
+
+
+
+/* 
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss"; 
+
+/* ============================= */
+/* THEME */
+/* ============================= */
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --text: #111111;
+  --muted: #6b7280;
+  --border: #e5e2dc;
+
+  --accent: #7c5cfc;
+  --accent-light: #a78bfa;
+}
+
+.dark {
+  --bg: #090909;
+  --surface: #151515;
+  --text: #f5f5f5;
+  --muted: #9ca3af;
+  --border: #2a2a2a;
+}
+
+/* ============================= */
+/* BASE */
+/* ============================= */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #ffffff 0%,
+      #f8f7f4 45%,
+      #f3f2ef 100%
+    );
+
+  color: var(--text);
+
+  transition:
+    background 0.45s ease,
+    color 0.45s ease;
+}
+
+.dark body {
+  background:
+    radial-gradient(
+      circle at top,
+      #181818 0%,
+      #0f0f0f 45%,
+      #090909 100%
+    );
+}
+
+/* ============================= */
+/* FONTS */
+/* ============================= */
+
+h1,
+h3,
+span {
+  font-family: "JetBrains Mono", monospace;
+}
+
+h2,
+p,
+h4 {
+  font-family: "Inter", sans-serif;
+}
+
+/* ============================= */
+/* HEADER */
+/* ============================= */
+
+header {
+  transition:
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+}
+
+.dark header:hover {
+  background: rgba(15, 15, 15, 0.82);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================= */
+/* LINKS / BUTTONS */
+/* ============================= */
+
+a,
+button {
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================= */
+/* IMAGES */
+/* ============================= */
+
+img {
+  display: block;
+  max-width: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================= */
+/* SECTIONS */
+/* ============================= */
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================= */
+/* GRADIENT ANIMATION */
+/* ============================= */
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 250% 250%;
+  animation: gradientMove 4s ease infinite;
+}
+
+/* ============================= */
+/* GRADIENT BORDER */
+/* ============================= */
+
+.gradient-border {
+  position: relative;
+
+  background: linear-gradient(
+    90deg,
+    #ff00cc,
+    #7928ff,
+    #00e5ff,
+    #00ff88,
+    #ffe600,
+    #ff4d00,
+    #ff00cc
+  );
+
+  background-size: 400% 400%;
+
+  animation: gradientMove 5s ease infinite;
+}
+
+/* ============================= */
+/* STORY LINE */
+/* ============================= */
+
+.story-line {
+  position: relative;
+  display: inline-block;
+
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s ease,
+    opacity 0.35s ease;
+
+  transform-origin: left center;
+}
+
+.story-line:hover {
+  transform: translateX(22px) scale(1.015);
+  color: var(--accent);
+  letter-spacing: -0.04em;
+}
+
+.story-line::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+
+  width: 0;
+  height: 2px;
+
+  background: #111;
+
+  transition: width 0.45s ease;
+}
+
+.story-line:hover::after {
+  width: 100%;
+}
+
+/* ============================= */
+/* MARQUEE */
+/* ============================= */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ============================= */
+/* SELECTION */
+/* ============================= */
+
+::selection {
+  background: #111;
+  color: white;
+}
+
+/* ============================= */
+/* SCROLLBAR */
+/* ============================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f2ef;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #ddd5ca,
+    #beb3a5
+  );
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa298;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #444,
+    #222
+  );
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
 }

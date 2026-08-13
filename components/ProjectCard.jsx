@@ -24,65 +24,110 @@ export default function ProjectCard({ project, index }) {
 
   tagsRef.current = [];
 
-  useGSAP(() => {
+  // useGSAP(() => {
+  //   // Card Reveal
+  //   gsap.from(cardRef.current, {
+  //     y: 120,
+  //     //opacity: 0,
+  //     duration: 1.2,
+  //     delay: index * 0.12,
+  //     ease: "power4.out",
+  //     scrollTrigger: {
+  //       trigger: cardRef.current,
+  //       start: "top 85%",
+  //     },
+  //   });
 
-    // Card Reveal
+  //   // Background Number
+  //   gsap.from(numberRef.current, {
+  //     scale: 0.4,
+  //     opacity: 0,
+  //     duration: 1.3,
+  //     ease: "power4.out",
+  //     scrollTrigger: {
+  //       trigger: cardRef.current,
+  //       start: "top 85%",
+  //     },
+  //   });
+
+  //   // gsap.from(lineRef.current, {
+  //   //         scaleX: 0,
+  //   //         transformOrigin: "left",
+  //   //         duration: 1,
+  //   //         delay: index * 0.15,
+  //   //        scrollTrigger: {
+  //   //            trigger: cardRef.current,
+  //   //            start: "top 85%",
+  //   //         },
+  //   // });
+  //   gsap.from(tagsRef.current, {
+  //        y: 20,
+  //         opacity: 0,
+  //        stagger: 0.08,
+  //        duration: 0.5,
+  //       delay: 0.4,
+  //      scrollTrigger: {
+  //        trigger: cardRef.current,
+  //        start: "top 85%",
+  //       },
+  //   });
+
+  // }, { scope: cardRef });
+
+
+  useGSAP(
+  () => {
+    // Card reveal
     gsap.from(cardRef.current, {
-      y: 120,
-      opacity: 0,
-      duration: 1.2,
-      delay: index * 0.12,
-      ease: "power4.out",
+      y: 40,
+      duration: 0.8,
+      delay: index * 0.08,
+      ease: "power3.out",
+      clearProps: "transform",
       scrollTrigger: {
         trigger: cardRef.current,
-        start: "top 85%",
+        start: "top 90%",
+        once: true,
       },
     });
 
-    // Background Number
+    // Background number
     gsap.from(numberRef.current, {
-      scale: 0.4,
-      opacity: 0,
-      duration: 1.3,
-      ease: "power4.out",
+      scale: 0.85,
+      duration: 0.8,
+      ease: "power3.out",
       scrollTrigger: {
         trigger: cardRef.current,
-        start: "top 85%",
+        start: "top 90%",
+        once: true,
       },
     });
 
-    // gsap.from(lineRef.current, {
-    //         scaleX: 0,
-    //         transformOrigin: "left",
-    //         duration: 1,
-    //         delay: index * 0.15,
-    //        scrollTrigger: {
-    //            trigger: cardRef.current,
-    //            start: "top 85%",
-    //         },
-    // });
-    gsap.from(tagsRef.current, {
-         y: 20,
-          opacity: 0,
-         stagger: 0.08,
-         duration: 0.5,
-        delay: 0.4,
-       scrollTrigger: {
-         trigger: cardRef.current,
-         start: "top 85%",
+    // Tags
+    if (tagsRef.current.length) {
+      gsap.from(tagsRef.current, {
+        y: 10,
+        duration: 0.4,
+        stagger: 0.05,
+        delay: 0.25,
+        clearProps: "transform",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 90%",
+          once: true,
         },
-    });
-
-  }, { scope: cardRef });
-
-
+      });
+    }
+  },
+  { scope: cardRef }
+);
 
   const enter = () => {
 
     gsap.to(imageRef.current, {
-      scale: 1.6,
-      rotate: 1.5,
-      duration: .8,
+      scale: 1.08,
+      rotate: 1,
+      duration: 0.7,
       ease: "power3.out",
     });
 
@@ -165,8 +210,10 @@ export default function ProjectCard({ project, index }) {
           rounded-[40px]
           border
           border-[#E5E2DC]
-          py-20
-          px-8
+          py-10
+          px-5
+          md:py-14
+          md:px-8
           transition-all
           duration-500
           hover:bg-white/90
@@ -220,9 +267,12 @@ export default function ProjectCard({ project, index }) {
                 src={project.coverImage}
                 alt={project.title}
                 className="
-                h-[320px]
+                h-[240px]
+                md: h-[300px]
+                lg:h-[340px]
                 w-full
-                object-cover saturate-90
+                object-cover
+                saturate-90
                 will-change-transform
                 transition-all
                 duration-700

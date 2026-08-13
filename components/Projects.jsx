@@ -126,6 +126,77 @@
 
 
 
+// "use client";
+
+// import { projects } from "@/data/projects";
+// import ProjectCard from "./ProjectCard";
+// import TextReveal from "./TextReveal";
+
+// export default function Projects() {
+//   return (
+//     <section
+//       id="projects"
+//       className="bg-[#f8f7f4] py-40"
+//     >
+//       <div className="max-w-[1700px] mx-auto px-8 md:px-16">
+
+//         <div className="mb-24 space-y-16">
+
+//            <div className="flex items-center gap-8">
+
+//                <span
+//                   className="
+//                   text-xs
+//                   uppercase
+//                   tracking-[0.35em]
+//                 text-neutral-500
+//                   "
+//                 >
+//                   03 / PROJECTS
+//               </span>
+
+//              <div className="h-px flex-1 bg-neutral-300" />
+
+//           </div>
+
+//           <TextReveal splitBy="chars" stagger={0.03}>
+
+//               <h2
+//                 className="
+//                 mt-10
+//                 text-[4rem]
+//                 md:text-[6rem]
+//                 lg:text-[7rem]
+//                font-light
+//                tracking-[-0.08em]
+//               leading-none
+//               "
+//             >
+//                Selected Works
+//             </h2>
+
+//           </TextReveal>
+
+//       </div>
+
+//         <div className="mt-24">
+
+//           {projects.map((project, index) => (
+//             <ProjectCard
+//               key={project.slug}
+//               project={project}
+//               index={index}
+//             />
+//           ))}
+
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// }
+
+
 "use client";
 
 import { projects } from "@/data/projects";
@@ -136,50 +207,43 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-[#f8f7f4] py-40"
+      className="bg-[var(--bg)] text-[var(--text)] py-20 md:py-24"
     >
-      <div className="max-w-[1700px] mx-auto px-8 md:px-16">
+      <div className="max-w-[1500px] mx-auto px-6 md:px-10 lg:px-16">
 
-        <div className="mb-24 space-y-16">
+        {/* Header */}
+        <div className="mb-12 md:mb-16">
 
-           <div className="flex items-center gap-8">
+          <div className="flex items-center gap-5">
 
-               <span
-                  className="
-                  text-xs
-                  uppercase
-                  tracking-[0.35em]
-                text-neutral-500
-                  "
-                >
-                  03 / PROJECTS
-              </span>
+            <span className="text-xs uppercase tracking-[0.35em] text-neutral-500">
+              06 / PROJECTS
+            </span>
 
-             <div className="h-px flex-1 bg-neutral-300" />
+            <div className="h-px flex-1 bg-[var(--border)]" />
 
           </div>
 
           <TextReveal splitBy="chars" stagger={0.03}>
-
-              <h2
-                className="
-                mt-10
-                text-[4rem]
-                md:text-[6rem]
-                lg:text-[7rem]
-               font-light
-               tracking-[-0.08em]
-              leading-none
+            <h2
+              className="
+                mt-8
+                text-5xl
+                md:text-7xl
+                lg:text-[6rem]
+                font-light
+                tracking-[-0.08em]
+                leading-none
               "
             >
-               Selected Works
+              Selected Works
             </h2>
-
           </TextReveal>
 
-      </div>
+        </div>
 
-        <div className="mt-24">
+        {/* Projects */}
+        <div className="space-y-6 md:space-y-8">
 
           {projects.map((project, index) => (
             <ProjectCard

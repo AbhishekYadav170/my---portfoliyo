@@ -191,7 +191,7 @@ return () => {
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-screen overflow-hidden bg-[#F8F7F4]"
+      className="relative min-h-[85vh] overflow-hidden bg-[#F8F7F4]"
     >
       {/* Background */}
 

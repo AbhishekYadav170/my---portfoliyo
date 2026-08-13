@@ -90,8 +90,11 @@ const Navbar = () =>{
         {[
           {name: "Home", href: "/"},
           { name: "About", href: "/about" },
+          { name: "Skill", href: "/about#skill" },
           { name: "Projects", href: "/about#projects" },
+          { name: "Education", href: "/about#education" },
           { name: "Contact", href: "/about#contact" },
+          
         ].map((item) => (
 
           <MagneticHover
