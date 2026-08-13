@@ -217,6 +217,260 @@
 
 
 
+// "use client";
+
+// import { ArrowUpRight } from "lucide-react";
+// import { useRef } from "react";
+// import gsap, { useGSAP } from "@/libs/gsap";
+
+// const services = [
+//   {
+//     number: "01",
+//     title: "Frontend & Backend Development",
+//     desc: "Modern, responsive and pixel-perfect interfaces built with React, Next.js, Tailwind CSS and premium animations.",
+//   },
+//   {
+//     number: "02",
+//     title: "Full Stack Development",
+//     desc: "Scalable backend architecture using Node.js, Express.js, MongoDB and REST APIs with clean code practices.",
+//   },
+//   {
+//     number: "03",
+//     title: "AI Applications",
+//     desc: "Building intelligent products using LangChain, Gemini APIs, RAG systems and modern AI workflows.",
+//   },
+// ];
+
+// export default function Services() {
+//   const sectionRef = useRef(null);
+
+//   useGSAP(
+//     () => {
+//       const cards = gsap.utils.toArray(".service-card");
+
+//       gsap.fromTo(
+//         cards,
+//         {
+//           opacity: 0,
+//           y: 50,
+//         },
+//         {
+//           opacity: 1,
+//           y: 0,
+//           duration: 0.8,
+//           stagger: 0.12,
+//           ease: "power3.out",
+//           clearProps: "transform,opacity",
+//           scrollTrigger: {
+//             trigger: sectionRef.current,
+//             start: "top 85%",
+//             toggleActions: "play none none none",
+//             once: true,
+//           },
+//         }
+//       );
+
+//       // Recalculate positions after the page layout is ready
+//       requestAnimationFrame(() => {
+//         if (gsap.ScrollTrigger) {
+//           gsap.ScrollTrigger.refresh();
+//         }
+//       });
+//     },
+//     {
+//       scope: sectionRef,
+//     }
+//   );
+
+//   return (
+//     <section
+//       ref={sectionRef}
+//       id="services"
+//       className="
+//         bg-[var(--bg)]
+//         text-[var(--text)]
+//         py-24
+//         md:py-32
+//         lg:py-36
+//       "
+//     >
+//       <div
+//         className="
+//           mx-auto
+//           max-w-7xl
+//           px-6
+//           sm:px-8
+//           md:px-12
+//           lg:px-16
+//         "
+//       >
+//         {/* HEADER */}
+
+//         <div className="mb-14 md:mb-20">
+//           <p
+//             className="
+//               text-xs
+//               uppercase
+//               tracking-[0.35em]
+//               text-neutral-500
+//             "
+//           >
+//             06 / SERVICES
+//           </p>
+
+//           <h2
+//             className="
+//               mt-5
+//               text-5xl
+//               sm:text-6xl
+//               md:text-7xl
+//               lg:text-[7rem]
+//               font-light
+//               leading-[0.9]
+//               tracking-[-0.07em]
+//             "
+//           >
+//             What I Do
+//           </h2>
+//         </div>
+
+//         {/* SERVICES */}
+
+//         <div className="space-y-5 md:space-y-6">
+//           {services.map((item) => (
+//             <article
+//               key={item.number}
+//               className="
+//                 service-card
+//                 group
+//                 rounded-[24px]
+//                 md:rounded-[32px]
+//                 border
+//                 border-[var(--border)]
+//                 bg-[var(--surface)]
+//                 p-6
+//                 sm:p-8
+//                 md:p-10
+//                 transition-all
+//                 duration-500
+//                 hover:-translate-y-1
+//                 hover:shadow-[0_25px_60px_rgba(0,0,0,.07)]
+//               "
+//             >
+//               <div
+//                 className="
+//                   grid
+//                   grid-cols-1
+//                   md:grid-cols-[80px_1fr_1fr_50px]
+//                   gap-6
+//                   md:gap-8
+//                   items-start
+//                 "
+//               >
+//                 {/* NUMBER */}
+
+//                 <div>
+//                   <span
+//                     className="
+//                       text-xs
+//                       uppercase
+//                       tracking-[0.25em]
+//                       text-neutral-400
+//                     "
+//                   >
+//                     {item.number}
+//                   </span>
+//                 </div>
+
+//                 {/* TITLE */}
+
+//                 <div>
+//                   <h3
+//                     className="
+//                       text-3xl
+//                       sm:text-4xl
+//                       md:text-5xl
+//                       font-light
+//                       leading-tight
+//                       tracking-[-0.04em]
+//                       transition-transform
+//                       duration-500
+//                       group-hover:translate-x-2
+//                     "
+//                   >
+//                     {item.title}
+//                   </h3>
+//                 </div>
+
+//                 {/* DESCRIPTION */}
+
+//                 <div>
+//                   <p
+//                     className="
+//                       text-base
+//                       md:text-lg
+//                       leading-7
+//                       md:leading-8
+//                       text-neutral-500
+//                     "
+//                   >
+//                     {item.desc}
+//                   </p>
+//                 </div>
+
+//                 {/* ARROW */}
+
+//                 <div
+//                   className="
+//                     hidden
+//                     md:flex
+//                     justify-end
+//                   "
+//                 >
+//                   <ArrowUpRight
+//                     className="
+//                       h-7
+//                       w-7
+//                       text-neutral-500
+//                       transition-all
+//                       duration-500
+//                       group-hover:rotate-45
+//                       group-hover:scale-110
+//                       group-hover:text-[var(--text)]
+//                     "
+//                   />
+//                 </div>
+//               </div>
+
+//               {/* MOBILE ARROW */}
+
+//               <div className="mt-5 flex justify-end md:hidden">
+//                 <ArrowUpRight
+//                   className="
+//                     h-6
+//                     w-6
+//                     text-neutral-500
+//                     transition-transform
+//                     duration-500
+//                     group-hover:rotate-45
+//                   "
+//                 />
+//               </div>
+//             </article>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
+
+
+
+
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
@@ -226,18 +480,21 @@ import gsap, { useGSAP } from "@/libs/gsap";
 const services = [
   {
     number: "01",
-    title: "Frontend Development",
-    desc: "Modern, responsive and pixel-perfect interfaces built with React, Next.js, Tailwind CSS and premium animations.",
+    title: "Frontend & Backend",
+    desc: "Modern responsive interfaces with React, Next.js, Tailwind CSS and smooth animations.",
+    gradient: "from-fuchsia-500 via-cyan-400 to-emerald-400",
   },
   {
     number: "02",
-    title: "Full Stack Development",
-    desc: "Scalable backend architecture using Node.js, Express.js, MongoDB and REST APIs with clean code practices.",
+    title: "Full Stack Development(Mern)",
+    desc: "Scalable applications using Node.js, Express.js, MongoDB and REST APIs.",
+    gradient: "from-emerald-400 via-cyan-400 to-blue-500",
   },
   {
     number: "03",
     title: "AI Applications",
-    desc: "Building intelligent products using LangChain, Gemini APIs, RAG systems and modern AI workflows.",
+    desc: "Intelligent products using LangChain, Gemini APIs, RAG systems and AI workflows.",
+    gradient: "from-orange-400 via-pink-500 to-fuchsia-500",
   },
 ];
 
@@ -252,25 +509,23 @@ export default function Services() {
         cards,
         {
           opacity: 0,
-          y: 50,
+          y: 35,
         },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          stagger: 0.12,
+          duration: 0.7,
+          stagger: 0.1,
           ease: "power3.out",
           clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 85%",
-            toggleActions: "play none none none",
             once: true,
           },
         }
       );
 
-      // Recalculate positions after the page layout is ready
       requestAnimationFrame(() => {
         if (gsap.ScrollTrigger) {
           gsap.ScrollTrigger.refresh();
@@ -287,11 +542,12 @@ export default function Services() {
       ref={sectionRef}
       id="services"
       className="
+        w-full
         bg-[var(--bg)]
         text-[var(--text)]
-        py-24
-        md:py-32
-        lg:py-36
+        py-16
+        sm:py-20
+        md:py-24
       "
     >
       <div
@@ -300,165 +556,227 @@ export default function Services() {
           max-w-7xl
           px-6
           sm:px-8
-          md:px-12
+          md:px-10
           lg:px-16
         "
       >
-        {/* HEADER */}
+        {/* ================= HEADER ================= */}
 
-        <div className="mb-14 md:mb-20">
+        <div className="mb-9 md:mb-12">
+
+          <div className="flex items-center gap-4">
+
+            <p
+              className="
+                whitespace-nowrap
+                text-[9px]
+                uppercase
+                tracking-[0.3em]
+                text-neutral-500
+                sm:text-[10px]
+              "
+            >
+              06 / SERVICES
+            </p>
+
+            <div className="h-px flex-1 bg-[var(--border)]" />
+
+          </div>
+
           <p
             className="
-              text-xs
+              mt-6
+              text-[10px]
               uppercase
-              tracking-[0.35em]
-              text-neutral-500
+              tracking-[0.25em]
+              text-neutral-400
             "
           >
-            06 / SERVICES
+            What I build
           </p>
 
           <h2
             className="
-              mt-5
-              text-5xl
-              sm:text-6xl
-              md:text-7xl
-              lg:text-[7rem]
+              mt-3
+              text-4xl
               font-light
-              leading-[0.9]
-              tracking-[-0.07em]
+              leading-none
+              tracking-[-0.06em]
+              sm:text-5xl
+              md:text-6xl
+              lg:text-[5.5rem]
             "
           >
-            What I Do
+            Capabilities
           </h2>
+
         </div>
 
-        {/* SERVICES */}
+        {/* ================= SERVICES ================= */}
 
-        <div className="space-y-5 md:space-y-6">
+        <div className="space-y-3 md:space-y-4">
+
           {services.map((item) => (
+
             <article
               key={item.number}
               className="
                 service-card
                 group
-                rounded-[24px]
-                md:rounded-[32px]
-                border
-                border-[var(--border)]
-                bg-[var(--surface)]
-                p-6
-                sm:p-8
-                md:p-10
-                transition-all
-                duration-500
-                hover:-translate-y-1
-                hover:shadow-[0_25px_60px_rgba(0,0,0,.07)]
+                rounded-[20px]
+                p-[1.5px]
+                bg-gradient-to-r
+                animate-gradient
               "
+              style={{
+                backgroundImage: `linear-gradient(
+                  90deg,
+                  var(--gradient-start, #ff00cc),
+                  var(--gradient-mid, #00e5ff),
+                  var(--gradient-end, #00ff88),
+                  var(--gradient-start, #ff00cc)
+                )`,
+                backgroundSize: "300% 300%",
+              }}
             >
+
               <div
                 className="
-                  grid
-                  grid-cols-1
-                  md:grid-cols-[80px_1fr_1fr_50px]
-                  gap-6
-                  md:gap-8
-                  items-start
+                  relative
+                  overflow-hidden
+                  rounded-[19px]
+                  bg-[var(--surface)]
+                  px-5
+                  py-5
+                  transition-all
+                  duration-500
+                  group-hover:-translate-y-[1px]
+                  sm:px-6
+                  sm:py-6
+                  md:px-8
+                  md:py-7
                 "
               >
-                {/* NUMBER */}
 
-                <div>
-                  <span
-                    className="
-                      text-xs
-                      uppercase
-                      tracking-[0.25em]
-                      text-neutral-400
-                    "
-                  >
-                    {item.number}
-                  </span>
-                </div>
-
-                {/* TITLE */}
-
-                <div>
-                  <h3
-                    className="
-                      text-3xl
-                      sm:text-4xl
-                      md:text-5xl
-                      font-light
-                      leading-tight
-                      tracking-[-0.04em]
-                      transition-transform
-                      duration-500
-                      group-hover:translate-x-2
-                    "
-                  >
-                    {item.title}
-                  </h3>
-                </div>
-
-                {/* DESCRIPTION */}
-
-                <div>
-                  <p
-                    className="
-                      text-base
-                      md:text-lg
-                      leading-7
-                      md:leading-8
-                      text-neutral-500
-                    "
-                  >
-                    {item.desc}
-                  </p>
-                </div>
-
-                {/* ARROW */}
+                {/* CONTENT */}
 
                 <div
                   className="
-                    hidden
-                    md:flex
-                    justify-end
+                    grid
+                    grid-cols-1
+                    gap-4
+                    md:grid-cols-[55px_1.1fr_1fr_35px]
+                    md:items-center
+                    md:gap-6
                   "
                 >
-                  <ArrowUpRight
-                    className="
-                      h-7
-                      w-7
-                      text-neutral-500
-                      transition-all
-                      duration-500
-                      group-hover:rotate-45
-                      group-hover:scale-110
-                      group-hover:text-[var(--text)]
-                    "
-                  />
+
+                  {/* NUMBER */}
+
+                  <div>
+                    <span
+                      className="
+                        text-[9px]
+                        font-medium
+                        tracking-[0.2em]
+                        text-neutral-400
+                      "
+                    >
+                      {item.number}
+                    </span>
+                  </div>
+
+                  {/* TITLE */}
+
+                  <div>
+
+                    <h3
+                      className="
+                        text-xl
+                        font-medium
+                        leading-tight
+                        tracking-[-0.035em]
+                        transition-transform
+                        duration-500
+                        group-hover:translate-x-1
+                        sm:text-2xl
+                        md:text-3xl
+                      "
+                    >
+                      {item.title}
+                    </h3>
+
+                  </div>
+
+                  {/* DESCRIPTION */}
+
+                  <div>
+
+                    <p
+                      className="
+                        max-w-md
+                        text-xs
+                        leading-5
+                        text-neutral-500
+                        dark:text-neutral-400
+                        sm:text-sm
+                        sm:leading-6
+                      "
+                    >
+                      {item.desc}
+                    </p>
+
+                  </div>
+
+                  {/* ARROW */}
+
+                  <div className="flex justify-end">
+
+                    <ArrowUpRight
+                      className="
+                        h-5
+                        w-5
+                        text-neutral-400
+                        transition-all
+                        duration-500
+                        group-hover:-translate-y-1
+                        group-hover:translate-x-1
+                        group-hover:rotate-45
+                        group-hover:text-[var(--text)]
+                      "
+                    />
+
+                  </div>
+
                 </div>
-              </div>
 
-              {/* MOBILE ARROW */}
+                {/* BOTTOM MOVING GRADIENT */}
 
-              <div className="mt-5 flex justify-end md:hidden">
-                <ArrowUpRight
-                  className="
-                    h-6
-                    w-6
-                    text-neutral-500
-                    transition-transform
-                    duration-500
-                    group-hover:rotate-45
-                  "
+                <div
+                  className={`
+                    pointer-events-none
+                    absolute
+                    bottom-0
+                    left-0
+                    h-[2px]
+                    w-full
+                    bg-gradient-to-r
+                    ${item.gradient}
+                    animate-gradient
+                  `}
+                  style={{
+                    backgroundSize: "250% 250%",
+                  }}
                 />
+
               </div>
+
             </article>
+
           ))}
+
         </div>
+
       </div>
     </section>
   );

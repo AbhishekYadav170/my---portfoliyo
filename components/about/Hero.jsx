@@ -1,191 +1,174 @@
-
 "use client";
-
-
 
 import { useRef } from "react";
 import gsap, { useGSAP, SplitText } from "@/libs/gsap";
 import FloatingTech from "@/components/ui/FloatingTech";
 import Noise from "@/components/ui/Noise";
 import MagneticHover from "@/components/MagneticHover";
-
+//import Floating3DProfile from "@/components/Floating3DProfile";
 
 export default function Hero() {
-
   const imRef = useRef(null);
 
   const firstNameRef = useRef(null);
 
   const lastNameRef = useRef(null);
 
-   const lightRef = useRef(null);
+  const lightRef = useRef(null);
 
-   const heroRef = useRef(null);
+  const heroRef = useRef(null);
 
-   const topRef = useRef(null);
+  const topRef = useRef(null);
 
-   const titleRef = useRef(null);
+  const titleRef = useRef(null);
 
-   const rightRef = useRef(null);
+  const rightRef = useRef(null);
 
-   const headingRef = useRef(null);
+  const headingRef = useRef(null);
 
-   const paraRef = useRef(null);
+  const paraRef = useRef(null);
 
-   const btnRef = useRef(null);
- 
-   const bottomRef = useRef(null);
+  const btnRef = useRef(null);
 
-   const glowRef = useRef(null);
+  const bottomRef = useRef(null);
 
-   const arrowRef = useRef(null);
+  const glowRef = useRef(null);
 
-   const contentRef = useRef(null);
+  const arrowRef = useRef(null);
 
-  
-  useGSAP(() => {
+  const contentRef = useRef(null);
 
-      gsap.from(topRef.current,{
-          y:-40,
-          opacity:0,
-          duration:.8,
-          ease:"power3.out"
+  useGSAP(
+    () => {
+      gsap.from(topRef.current, {
+        y: -40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
       });
 
-      
-      const firstSplit = new SplitText(firstNameRef.current,{
-         type:"chars"
+      const firstSplit = new SplitText(firstNameRef.current, {
+        type: "chars",
       });
 
-      const lastSplit = new SplitText(lastNameRef.current,{
-        type:"chars"
+      const lastSplit = new SplitText(lastNameRef.current, {
+        type: "chars",
       });
 
-    gsap.from(imRef.current,{
-        y:120,
-       opacity:0,
-       duration:.8,
-       delay:.2
-    });
-
-    gsap.from(firstSplit.chars,{
-       y:180,
-       opacity:0,
-       stagger:.03,
-       duration:1,
-       ease:"power4.out",
-       delay:.25
-    });
-
-    gsap.from(lastSplit.chars,{
-       y:180,
-       opacity:0,
-       stagger:.03,
-       duration:1,
-       ease:"power4.out",
-       delay:.45
-    });
-
-      gsap.from(rightRef.current,{
-          x:80,
-          opacity:0,
-          duration:1,
-          ease:"power4.out",
-          delay:.5
+      gsap.from(imRef.current, {
+        y: 120,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.2,
       });
 
-      gsap.from(headingRef.current,{
-           x:120,
-           opacity:0,
-           duration:1,
-           delay:.6
+      gsap.from(firstSplit.chars, {
+        y: 180,
+        opacity: 0,
+        stagger: 0.03,
+        duration: 1,
+        ease: "power4.out",
+        delay: 0.25,
       });
 
-      gsap.from(paraRef.current,{
-         y:40,
-         opacity:0,
-         duration:.8,
-         delay:.9
+      gsap.from(lastSplit.chars, {
+        y: 180,
+        opacity: 0,
+        stagger: 0.03,
+        duration: 1,
+        ease: "power4.out",
+        delay: 0.45,
       });
 
-      gsap.from(btnRef.current,{
-          y:60,
-         opacity:0,
-         duration:.8,
-         delay:1
+      gsap.from(rightRef.current, {
+        x: 80,
+        opacity: 0,
+        duration: 1,
+        ease: "power4.out",
+        delay: 0.5,
       });
 
-      gsap.to(arrowRef.current,{
-          y:10,
-          repeat:-1,
-          yoyo:true,
-          duration:.8,
-          ease:"power1.inOut"
+      gsap.from(headingRef.current, {
+        x: 120,
+        opacity: 0,
+        duration: 1,
+        delay: 0.6,
       });
 
-      gsap.from(bottomRef.current,{
-          y:50,
-          opacity:0,
-          duration:.8,
-          delay:.8
+      gsap.from(paraRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.9,
       });
 
-      gsap.to(glowRef.current,{
-          x:100,
-          y:-60,
-          repeat:-1,
-          yoyo:true,
-          duration:8,
-          ease:"sine.inOut"
+      gsap.from(btnRef.current, {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        delay: 1,
+      });
+
+      gsap.to(arrowRef.current, {
+        y: 10,
+        repeat: -1,
+        yoyo: true,
+        duration: 0.8,
+        ease: "power1.inOut",
+      });
+
+      gsap.from(bottomRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.8,
+      });
+
+      gsap.to(glowRef.current, {
+        x: 100,
+        y: -60,
+        repeat: -1,
+        yoyo: true,
+        duration: 8,
+        ease: "sine.inOut",
       });
       const moveLight = (e) => {
+        const rect = heroRef.current.getBoundingClientRect();
 
-      const rect = heroRef.current.getBoundingClientRect();
-
-      gsap.to(lightRef.current, {
-           x: e.clientX - rect.left - 175,
+        gsap.to(lightRef.current, {
+          x: e.clientX - rect.left - 175,
           y: e.clientY - rect.top - 175,
           duration: 0.35,
           ease: "power3.out",
           overwrite: true,
-      });
-
-};
+        });
+      };
 
       window.addEventListener("mousemove", moveLight);
 
       // Mouse Parallax
-   const move = (e) => {
+      const move = (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 40;
+        const y = (e.clientY / window.innerHeight - 0.5) * 40;
 
-   const x = (e.clientX / window.innerWidth - 0.5) * 40;
-   const y = (e.clientY / window.innerHeight - 0.5) * 40;
+        gsap.to(contentRef.current, {
+          x,
+          y,
+          duration: 1.2,
+          ease: "power3.out",
+          overwrite: true,
+        });
+      };
 
-   gsap.to(contentRef.current, {
-    x,
-    y,
-    duration: 1.2,
-    ease: "power3.out",
-    overwrite: true,
-  });
+      window.addEventListener("mousemove", move);
 
-};
-
-window.addEventListener("mousemove", move);
-
-return () => {
-  window.removeEventListener("mousemove", moveLight);
-  window.removeEventListener("mousemove", move);
-};
-
-
-
-},{scope:heroRef});
-
-
-
-
-
-
+      return () => {
+        window.removeEventListener("mousemove", moveLight);
+        window.removeEventListener("mousemove", move);
+      };
+    },
+    { scope: heroRef },
+  );
 
   return (
     <section
@@ -196,7 +179,6 @@ return () => {
       {/* Background */}
 
       <div className="absolute inset-0">
-
         <div
           className="
           absolute
@@ -224,8 +206,8 @@ return () => {
         />
 
         <div
-            ref={lightRef}
-            className="
+          ref={lightRef}
+          className="
             absolute
             h-[350px]
             w-[350px]
@@ -236,7 +218,6 @@ return () => {
            z-10
            "
         />
-
       </div>
       <FloatingTech />
 
@@ -260,36 +241,24 @@ return () => {
       >
         {/* Top */}
 
-        <div
-         ref={topRef}
-         className="flex items-center justify-between">
-
+        <div ref={topRef} className="flex items-center justify-between">
           <p className="uppercase tracking-[0.35em] text-xs text-neutral-500">
             01 / HERO
           </p>
 
           <div className="text-right">
+            <p className="text-sm text-neutral-500">Based in India</p>
 
-            <p className="text-sm text-neutral-500">
-              Based in India
-            </p>
-
-            <p className="mt-2 text-sm text-green-600">
-              ● Available for Work
-            </p>
-
+            <p className="mt-2 text-sm text-green-600">● Available for Work</p>
           </div>
-
         </div>
 
         {/* Center */}
 
-        <div className="grid items-center gap-36 lg:grid-cols-2">
-
+        <div className="grid items-center gap-16 lg:grid-cols-2 ">
           {/* Left */}
 
           <div ref={titleRef}>
-
             <p className="mb-6 uppercase tracking-[0.4em] text-neutral-400">
               Hello.
             </p>
@@ -301,66 +270,63 @@ return () => {
               tracking-[-0.06em]
             "
             >
-              <span 
-               ref={imRef}
-               className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+              <span
+                ref={imRef}
+                className="block text-[4rem] md:text-[6rem] lg:text-[7rem]"
+              >
                 I'm
               </span>
 
-              <span 
-              ref={firstNameRef}
-              className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+              <span
+                ref={firstNameRef}
+                className="block text-[4rem] md:text-[6rem] lg:text-[7rem]"
+              >
                 Abhishek
               </span>
 
               <span
-              ref={lastNameRef} 
-              className="block text-[4rem] md:text-[6rem] lg:text-[7rem]">
+                ref={lastNameRef}
+                className="block text-[4rem] md:text-[6rem] lg:text-[7rem]"
+              >
                 Yadav
               </span>
-
             </h1>
-
           </div>
 
           {/* Right */}
 
-          <div
-           ref={rightRef}
-           className="max-w-xl">
+          <div 
+             ref={rightRef} 
+             className="max-w-xl"
+          >
+
+            {/* 3D PROFILE */}
+            {/* <div className="mb-8">
+              <Floating3DProfile />
+            </div> */}
 
             <h2
-             ref={headingRef}
-             className="text-3xl font-light leading-snug md:text-5xl">
-
+              ref={headingRef}
+              className="text-3xl font-light leading-snug md:text-5xl"
+            >
               Full Stack Developer
-
-              <br />
-
-              & Creative Developer
-
+              <br />& Creative Developer
             </h2>
 
             <p
-             ref={paraRef}
-             className="mt-8 text-lg leading-9 text-neutral-600">
-
-              I build modern digital experiences using
-              React, Next.js, GSAP and beautiful UI
-              animations focused on performance and
-              user experience.
-
+              ref={paraRef}
+              className="mt-8 text-lg leading-9 text-neutral-600"
+            >
+              I build modern digital experiences using React, Next.js, GSAP and
+              beautiful UI animations focused on performance and user
+              experience.
             </p>
 
-            <div
-             ref={btnRef}
-             className="mt-12 flex flex-wrap gap-5">
-
+            <div ref={btnRef} className="mt-12 flex flex-wrap gap-5">
               <MagneticHover strength={30}>
-
                 <a
-                     href="#projects"
-                     className="
+                  href="#projects"
+                  className="
                      group
                      relative
                      overflow-hidden
@@ -373,14 +339,11 @@ return () => {
                      uppercase
                      tracking-[0.25em]
                     "
-                  >
+                >
+                  <span className="relative z-20">View Projects</span>
 
-                    <span className="relative z-20">
-                         View Projects
-                   </span>
-
-                   <span
-                        className="
+                  <span
+                    className="
                         absolute
                         inset-0
                         origin-left
@@ -390,10 +353,10 @@ return () => {
                         duration-500
                          group-hover:scale-x-100
                         "
-                    />
+                  />
 
-                    <span
-                       className="
+                  <span
+                    className="
                        absolute
                        inset-0
                        z-30
@@ -406,22 +369,17 @@ return () => {
                       duration-500
                        group-hover:opacity-100
                       "
-                      >
-                       View Projects
-                 </span>
-
+                  >
+                    View Projects
+                  </span>
                 </a>
-
               </MagneticHover>
 
-
-
-  <MagneticHover strength={30}>
-
-    <a
-      href="/resume.pdf"
-      target="_blank"
-      className="
+              <MagneticHover strength={30}>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  className="
       rounded-full
       border
       border-[#E5E2DC]
@@ -437,54 +395,34 @@ return () => {
       hover:bg-black
       hover:text-white
       "
-    >
-      Download CV
-    </a>
-
-  </MagneticHover>
-
-</div>
-
+                >
+                  Download CV
+                </a>
+              </MagneticHover>
+            </div>
           </div>
-
         </div>
 
         {/* Bottom */}
 
         <div
-         ref={bottomRef}
-         className="flex items-center justify-between border-t border-neutral-300 pt-8">
-
+          ref={bottomRef}
+          className="flex items-center justify-between border-t border-neutral-300 pt-8"
+        >
           <p className="text-neutral-500">
-
             Building beautiful digital experiences.
-
           </p>
 
           <div className="flex items-center gap-4">
+            <span className="uppercase tracking-[0.35em] text-xs">Scroll</span>
 
-            <span className="uppercase tracking-[0.35em] text-xs">
-
-              Scroll
-
-            </span>
-
-            <span
-             ref={arrowRef}
-             className="text-xl">
-
+            <span ref={arrowRef} className="text-xl">
               ↓
-
             </span>
-
           </div>
-
         </div>
-
       </div>
       <Noise />
     </section>
   );
 }
-
-
