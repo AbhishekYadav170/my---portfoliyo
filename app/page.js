@@ -64,18 +64,87 @@
 
 
 
+// "use client";
+
+// import InfiniteCarousel from "@/components/InfiniteCarousel";
+// import AboutIntro from "@/components/about/AboutIntro";
+// import SkillsMarquee from "@/components/about/SkillsMarquee";
+// import Projects from "@/components/Projects";
+// import TimeLine from "@/components/about/TimeLine";
+// import Education from "@/components/about/Education";
+// import ContactCTA from "@/components/about/ContactCTA";
+
+// import { projects } from "@/data/projects";
+// import Services from "@/components/about/Services";
+
+// export default function Home() {
+//   return (
+//     <main className="w-full overflow-x-hidden">
+
+//       {/* ================= HOME ================= */}
+//       <section id="home">
+//         <InfiniteCarousel projects={projects} />
+//       </section>
+
+
+//       {/* ================= ABOUT ================= */}
+//       <section id="about">
+//         <AboutIntro />
+//       </section>
+
+
+//       {/* ================= SKILLS ================= */}
+//       <section id="skills">
+//         <SkillsMarquee />
+//       </section>
+
+
+//       {/* ================= PROJECTS ================= */}
+//       <section id="projects">
+//         <Projects />
+//       </section>
+
+
+//       {/* ================= MY JOURNEY ================= */}
+//       <section id="journey">
+//         <TimeLine />
+//       </section>
+
+
+//       ================= EDUCATION =================
+//       <section id="education">
+//         <Education />
+//       </section>
+
+
+//       <section id="education">
+//         <Services />
+//       </section>
+
+
+//       {/* ================= CONTACT ================= */}
+//       <section id="contact">
+//         <ContactCTA />
+//       </section>
+
+//     </main>
+//   );
+// }
+
+
+
+
 "use client";
 
 import InfiniteCarousel from "@/components/InfiniteCarousel";
 import AboutIntro from "@/components/about/AboutIntro";
 import SkillsMarquee from "@/components/about/SkillsMarquee";
 import Projects from "@/components/Projects";
-import TimeLine from "@/components/about/TimeLine";
 import Education from "@/components/about/Education";
 import ContactCTA from "@/components/about/ContactCTA";
+import Services from "@/components/about/Services";
 
 import { projects } from "@/data/projects";
-import Services from "@/components/about/Services";
 
 export default function Home() {
   return (
@@ -86,41 +155,30 @@ export default function Home() {
         <InfiniteCarousel projects={projects} />
       </section>
 
-
       {/* ================= ABOUT ================= */}
       <section id="about">
         <AboutIntro />
       </section>
-
 
       {/* ================= SKILLS ================= */}
       <section id="skills">
         <SkillsMarquee />
       </section>
 
-
       {/* ================= PROJECTS ================= */}
       <section id="projects">
         <Projects />
       </section>
 
-
-      {/* ================= MY JOURNEY ================= */}
-      <section id="journey">
-        <TimeLine />
-      </section>
-
-
-      ================= EDUCATION =================
+      {/* ================= EDUCATION ================= */}
       <section id="education">
         <Education />
       </section>
 
-
-      <section id="education">
+      {/* ================= SERVICES ================= */}
+      <section id="services">
         <Services />
       </section>
-
 
       {/* ================= CONTACT ================= */}
       <section id="contact">

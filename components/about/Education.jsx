@@ -1075,6 +1075,454 @@
 
 
 
+// "use client";
+
+// import { GraduationCap, School, Award, MapPin, Calendar } from "lucide-react";
+// import { useRef } from "react";
+// import gsap, { useGSAP } from "@/libs/gsap";
+
+// const education = [
+//   {
+//     year: "2025",
+//     title: "Bachelor of Computer Applications",
+//     institute: "Veer Bahadur Singh Purvanchal University",
+//     location: "Jaunpur, Uttar Pradesh",
+//     description:
+//       "Completed BCA with a strong foundation in programming, web development, databases, software engineering and modern computer technologies.",
+//     type: "BCA",
+//     icon: GraduationCap,
+//   },
+//   {
+//     year: "2022",
+//     title: "Intermediate",
+//     institute: "Sitaram Inter College",
+//     location: "Muftiganj, Jaunpur, Uttar Pradesh",
+//     description:
+//       "Completed Class 12th and developed a strong academic foundation that helped me move towards computer applications and technology.",
+//     type: "12th",
+//     icon: School,
+//   },
+//   {
+//     year: "2020",
+//     title: "High School",
+//     institute: "Sarju Devi Inter College",
+//     location: "Muftiganj, Jaunpur, Uttar Pradesh",
+//     description:
+//       "Completed Class 10th and built the academic foundation that became the starting point of my learning journey.",
+//     type: "10th",
+//     icon: Award,
+//   },
+// ];
+
+// export default function Education() {
+//   const sectionRef = useRef(null);
+
+//   useGSAP(
+//     () => {
+//       gsap.from(".education-card", {
+//         opacity: 0,
+//         y: 60,
+//         duration: 0.9,
+//         stagger: 0.15,
+//         ease: "power3.out",
+//         scrollTrigger: {
+//           trigger: sectionRef.current,
+//           start: "top 80%",
+//           once: true,
+//         },
+//       });
+//     },
+//     { scope: sectionRef }
+//   );
+
+//   return (
+//     <section
+//       id="education"
+//       ref={sectionRef}
+//       className="
+//         relative
+//         overflow-hidden
+//         bg-[var(--bg)]
+//         text-[var(--text)]
+//         py-24
+//         md:py-32
+//         lg:py-36
+//       "
+//     >
+//       <div
+//         className="
+//           mx-auto
+//           max-w-[1500px]
+//           px-6
+//           md:px-10
+//           lg:px-14
+//         "
+//       >
+
+//         {/* ================= HEADER ================= */}
+
+//         <div className="education-card mb-16">
+
+//           <p
+//             className="
+//               text-xs
+//               uppercase
+//               tracking-[0.4em]
+//               text-neutral-500
+//             "
+//           >
+//             06 / EDUCATION
+//           </p>
+
+//           <h2
+//             className="
+//               mt-5
+//               text-5xl
+//               md:text-7xl
+//               lg:text-[6.5rem]
+//               font-light
+//               leading-[0.9]
+//               tracking-[-0.07em]
+//             "
+//           >
+//             Education
+//           </h2>
+
+//           <p
+//             className="
+//               mt-7
+//               max-w-2xl
+//               text-base
+//               md:text-lg
+//               leading-8
+//               text-neutral-500
+//             "
+//           >
+//             My academic foundation and educational journey that shaped
+//             my path into software development.
+//           </p>
+
+//         </div>
+
+
+//         {/* ================= CARDS ================= */}
+
+//         <div
+//           className="
+//             grid
+//             grid-cols-1
+//             md:grid-cols-2
+//             xl:grid-cols-3
+//             gap-6
+//             items-stretch
+//           "
+//         >
+
+//           {education.map((item, index) => {
+//             const Icon = item.icon;
+
+//             return (
+//               <div
+//                 key={item.title}
+//                 className="
+//                   education-card
+//                   group
+//                   relative
+//                   h-full
+//                   min-h-[520px]
+//                   rounded-[30px]
+//                   overflow-hidden
+//                   p-[1.5px]
+//                 "
+//               >
+
+//                 {/* =================================
+//                     CONTINUOUS ANIMATED GRADIENT
+//                 ================================= */}
+
+//                 <div
+//                   className="
+//                     absolute
+//                     inset-[-150%]
+//                     animate-spin
+//                     [animation-duration:5s]
+//                     bg-[conic-gradient(from_0deg,#00ff88,#2563eb,#ff0066,#8b5cf6,#00ff88)]
+//                   "
+//                 />
+
+//                 {/* ================= CARD ================= */}
+
+//                 <article
+//                   className="
+//                     relative
+//                     z-10
+//                     flex
+//                     h-full
+//                     min-h-[517px]
+//                     flex-col
+//                     rounded-[29px]
+//                     border
+//                     border-white/10
+//                     bg-[#101010]
+//                     p-8
+//                     md:p-9
+//                     lg:p-10
+//                     transition-all
+//                     duration-500
+//                     group-hover:bg-[#111111]
+//                     group-hover:shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+//                   "
+//                 >
+
+//                   {/* TOP */}
+
+//                   <div className="flex items-center justify-between">
+
+//                     {/* ICON */}
+
+//                     <div
+//                       className="
+//                         flex
+//                         h-16
+//                         w-16
+//                         items-center
+//                         justify-center
+//                         rounded-2xl
+//                         border
+//                         border-white/10
+//                         bg-black
+//                         shadow-[0_0_30px_rgba(139,92,246,0.15)]
+//                         transition-all
+//                         duration-500
+//                         group-hover:scale-105
+//                       "
+//                     >
+//                       <Icon
+//                         size={30}
+//                         strokeWidth={1.5}
+//                         className="
+//                           text-white
+//                           transition-colors
+//                           duration-500
+//                           group-hover:text-cyan-400
+//                         "
+//                       />
+//                     </div>
+
+//                     {/* NUMBER */}
+
+//                     <span
+//                       className="
+//                         text-6xl
+//                         font-light
+//                         tracking-[-0.08em]
+//                         text-white/10
+//                         transition-all
+//                         duration-500
+//                         group-hover:text-white/20
+//                       "
+//                     >
+//                       0{index + 1}
+//                     </span>
+
+//                   </div>
+
+
+//                   {/* TYPE */}
+
+//                   <p
+//                     className="
+//                       mt-12
+//                       text-xs
+//                       font-medium
+//                       uppercase
+//                       tracking-[0.35em]
+//                       text-neutral-500
+//                     "
+//                   >
+//                     {item.type}
+//                   </p>
+
+
+//                   {/* TITLE */}
+
+//                   <h3
+//                     className="
+//                       mt-5
+//                       min-h-[90px]
+//                       text-3xl
+//                       md:text-4xl
+//                       font-light
+//                       leading-tight
+//                       tracking-[-0.04em]
+//                       text-white
+//                       transition-transform
+//                       duration-500
+//                       group-hover:translate-x-1
+//                     "
+//                   >
+//                     {item.title}
+//                   </h3>
+
+
+//                   {/* YEAR */}
+
+//                   <div
+//                     className="
+//                       mt-6
+//                       flex
+//                       items-center
+//                       gap-2
+//                       text-sm
+//                       text-neutral-400
+//                     "
+//                   >
+//                     <Calendar size={15} />
+
+//                     <span>
+//                       Passed in {item.year}
+//                     </span>
+//                   </div>
+
+
+//                   {/* INSTITUTE */}
+
+//                   <div className="mt-7">
+
+//                     <p
+//                       className="
+//                         text-lg
+//                         font-medium
+//                         leading-7
+//                         text-white
+//                       "
+//                     >
+//                       {item.institute}
+//                     </p>
+
+//                     <div
+//                       className="
+//                         mt-2
+//                         flex
+//                         items-start
+//                         gap-2
+//                         text-sm
+//                         leading-6
+//                         text-neutral-500
+//                       "
+//                     >
+//                       <MapPin
+//                         size={15}
+//                         className="mt-1 shrink-0"
+//                       />
+
+//                       <span>
+//                         {item.location}
+//                       </span>
+//                     </div>
+
+//                   </div>
+
+
+//                   {/* DIVIDER */}
+
+//                   <div
+//                     className="
+//                       mt-7
+//                       h-px
+//                       w-full
+//                       bg-white/10
+//                     "
+//                   />
+
+
+//                   {/* DESCRIPTION */}
+
+//                   <p
+//                     className="
+//                       mt-7
+//                       text-sm
+//                       leading-7
+//                       text-neutral-400
+//                     "
+//                   >
+//                     {item.description}
+//                   </p>
+
+
+//                   {/* BOTTOM */}
+
+//                   <div className="mt-auto pt-8">
+
+//                     <div
+//                       className="
+//                         h-1
+//                         w-12
+//                         rounded-full
+//                         bg-gradient-to-r
+//                         from-purple-500
+//                         via-blue-500
+//                         to-cyan-400
+//                         transition-all
+//                         duration-500
+//                         group-hover:w-24
+//                       "
+//                     />
+
+//                   </div>
+
+//                 </article>
+
+//               </div>
+//             );
+//           })}
+
+//         </div>
+
+
+//         {/* ================= BOTTOM ================= */}
+
+//         <div
+//           className="
+//             education-card
+//             mt-12
+//             border-t
+//             border-[var(--border)]
+//             pt-6
+//             flex
+//             flex-col
+//             md:flex-row
+//             md:items-center
+//             md:justify-between
+//             gap-4
+//           "
+//         >
+
+//           <p className="text-sm text-neutral-500">
+//             Education → Skills → Projects → Professional Growth
+//           </p>
+
+//           <p
+//             className="
+//               text-xs
+//               uppercase
+//               tracking-[0.3em]
+//               text-purple-500
+//             "
+//           >
+//             Always Learning
+//           </p>
+
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
 "use client";
 
 import { GraduationCap, School, Award, MapPin, Calendar } from "lucide-react";
@@ -1121,10 +1569,11 @@ export default function Education() {
     () => {
       gsap.from(".education-card", {
         opacity: 0,
-        y: 60,
-        duration: 0.9,
-        stagger: 0.15,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.12,
         ease: "power3.out",
+        clearProps: "transform,opacity",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
@@ -1144,9 +1593,9 @@ export default function Education() {
         overflow-hidden
         bg-[var(--bg)]
         text-[var(--text)]
-        py-24
-        md:py-32
-        lg:py-36
+        py-16
+        sm:py-20
+        md:py-24
       "
     >
       <div
@@ -1154,6 +1603,7 @@ export default function Education() {
           mx-auto
           max-w-[1500px]
           px-6
+          sm:px-8
           md:px-10
           lg:px-14
         "
@@ -1161,14 +1611,15 @@ export default function Education() {
 
         {/* ================= HEADER ================= */}
 
-        <div className="education-card mb-16">
+        <div className="education-card mb-10 sm:mb-12 md:mb-14">
 
           <p
             className="
-              text-xs
+              text-[9px]
               uppercase
               tracking-[0.4em]
               text-neutral-500
+              sm:text-xs
             "
           >
             06 / EDUCATION
@@ -1176,13 +1627,14 @@ export default function Education() {
 
           <h2
             className="
-              mt-5
-              text-5xl
-              md:text-7xl
-              lg:text-[6.5rem]
+              mt-4
+              text-4xl
               font-light
-              leading-[0.9]
+              leading-none
               tracking-[-0.07em]
+              sm:text-5xl
+              md:text-6xl
+              lg:text-[5.5rem]
             "
           >
             Education
@@ -1190,31 +1642,30 @@ export default function Education() {
 
           <p
             className="
-              mt-7
-              max-w-2xl
-              text-base
-              md:text-lg
-              leading-8
+              mt-5
+              max-w-xl
+              text-sm
+              leading-6
               text-neutral-500
+              sm:text-base
+              sm:leading-7
             "
           >
-            My academic foundation and educational journey that shaped
-            my path into software development.
+            My academic foundation and educational journey into
+            software development.
           </p>
 
         </div>
 
-
-        {/* ================= CARDS ================= */}
+        {/* ================= EDUCATION CARDS ================= */}
 
         <div
           className="
             grid
             grid-cols-1
+            gap-5
             md:grid-cols-2
             xl:grid-cols-3
-            gap-6
-            items-stretch
           "
         >
 
@@ -1228,17 +1679,14 @@ export default function Education() {
                   education-card
                   group
                   relative
-                  h-full
-                  min-h-[520px]
-                  rounded-[30px]
+                  min-h-[450px]
+                  rounded-[26px]
                   overflow-hidden
                   p-[1.5px]
                 "
               >
 
-                {/* =================================
-                    CONTINUOUS ANIMATED GRADIENT
-                ================================= */}
+                {/* CONTINUOUS GRADIENT */}
 
                 <div
                   className="
@@ -1246,31 +1694,36 @@ export default function Education() {
                     inset-[-150%]
                     animate-spin
                     [animation-duration:5s]
-                    bg-[conic-gradient(from_0deg,#00ff88,#2563eb,#ff0066,#8b5cf6,#00ff88)]
+                    bg-[conic-gradient(
+                      from_0deg,
+                      #00ff88,
+                      #2563eb,
+                      #ff0066,
+                      #8b5cf6,
+                      #00ff88
+                    )]
                   "
                 />
 
-                {/* ================= CARD ================= */}
+                {/* CARD */}
 
                 <article
                   className="
                     relative
                     z-10
                     flex
+                    min-h-[447px]
                     h-full
-                    min-h-[517px]
                     flex-col
-                    rounded-[29px]
-                    border
-                    border-white/10
+                    rounded-[25px]
                     bg-[#101010]
-                    p-8
-                    md:p-9
-                    lg:p-10
+                    p-6
+                    sm:p-7
+                    md:p-8
                     transition-all
                     duration-500
                     group-hover:bg-[#111111]
-                    group-hover:shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+                    group-hover:shadow-[0_25px_70px_rgba(0,0,0,0.45)]
                   "
                 >
 
@@ -1278,27 +1731,24 @@ export default function Education() {
 
                   <div className="flex items-center justify-between">
 
-                    {/* ICON */}
-
                     <div
                       className="
                         flex
-                        h-16
-                        w-16
+                        h-13
+                        w-13
                         items-center
                         justify-center
-                        rounded-2xl
+                        rounded-xl
                         border
                         border-white/10
                         bg-black
-                        shadow-[0_0_30px_rgba(139,92,246,0.15)]
                         transition-all
                         duration-500
                         group-hover:scale-105
                       "
                     >
                       <Icon
-                        size={30}
+                        size={25}
                         strokeWidth={1.5}
                         className="
                           text-white
@@ -1309,11 +1759,9 @@ export default function Education() {
                       />
                     </div>
 
-                    {/* NUMBER */}
-
                     <span
                       className="
-                        text-6xl
+                        text-5xl
                         font-light
                         tracking-[-0.08em]
                         text-white/10
@@ -1327,31 +1775,27 @@ export default function Education() {
 
                   </div>
 
-
                   {/* TYPE */}
 
                   <p
                     className="
-                      mt-12
-                      text-xs
+                      mt-8
+                      text-[10px]
                       font-medium
                       uppercase
-                      tracking-[0.35em]
+                      tracking-[0.3em]
                       text-neutral-500
                     "
                   >
                     {item.type}
                   </p>
 
-
                   {/* TITLE */}
 
                   <h3
                     className="
-                      mt-5
-                      min-h-[90px]
-                      text-3xl
-                      md:text-4xl
+                      mt-3
+                      text-2xl
                       font-light
                       leading-tight
                       tracking-[-0.04em]
@@ -1359,41 +1803,40 @@ export default function Education() {
                       transition-transform
                       duration-500
                       group-hover:translate-x-1
+                      sm:text-3xl
                     "
                   >
                     {item.title}
                   </h3>
 
-
                   {/* YEAR */}
 
                   <div
                     className="
-                      mt-6
+                      mt-4
                       flex
                       items-center
                       gap-2
-                      text-sm
+                      text-xs
                       text-neutral-400
                     "
                   >
-                    <Calendar size={15} />
+                    <Calendar size={14} />
 
                     <span>
                       Passed in {item.year}
                     </span>
                   </div>
 
-
                   {/* INSTITUTE */}
 
-                  <div className="mt-7">
+                  <div className="mt-5">
 
                     <p
                       className="
-                        text-lg
+                        text-base
                         font-medium
-                        leading-7
+                        leading-6
                         text-white
                       "
                     >
@@ -1406,14 +1849,14 @@ export default function Education() {
                         flex
                         items-start
                         gap-2
-                        text-sm
-                        leading-6
+                        text-xs
+                        leading-5
                         text-neutral-500
                       "
                     >
                       <MapPin
-                        size={15}
-                        className="mt-1 shrink-0"
+                        size={14}
+                        className="mt-0.5 shrink-0"
                       />
 
                       <span>
@@ -1423,41 +1866,40 @@ export default function Education() {
 
                   </div>
 
-
                   {/* DIVIDER */}
 
                   <div
                     className="
-                      mt-7
+                      mt-5
                       h-px
                       w-full
                       bg-white/10
                     "
                   />
 
-
                   {/* DESCRIPTION */}
 
                   <p
                     className="
-                      mt-7
-                      text-sm
-                      leading-7
+                      mt-5
+                      text-xs
+                      leading-6
                       text-neutral-400
+                      sm:text-sm
+                      sm:leading-6
                     "
                   >
                     {item.description}
                   </p>
 
+                  {/* BOTTOM GRADIENT */}
 
-                  {/* BOTTOM */}
-
-                  <div className="mt-auto pt-8">
+                  <div className="mt-auto pt-6">
 
                     <div
                       className="
                         h-1
-                        w-12
+                        w-10
                         rounded-full
                         bg-gradient-to-r
                         from-purple-500
@@ -1465,7 +1907,7 @@ export default function Education() {
                         to-cyan-400
                         transition-all
                         duration-500
-                        group-hover:w-24
+                        group-hover:w-20
                       "
                     />
 
@@ -1479,35 +1921,35 @@ export default function Education() {
 
         </div>
 
-
         {/* ================= BOTTOM ================= */}
 
         <div
           className="
             education-card
-            mt-12
-            border-t
-            border-[var(--border)]
-            pt-6
+            mt-10
             flex
             flex-col
+            gap-3
+            border-t
+            border-[var(--border)]
+            pt-5
             md:flex-row
             md:items-center
             md:justify-between
-            gap-4
           "
         >
 
-          <p className="text-sm text-neutral-500">
+          <p className="text-xs text-neutral-500 sm:text-sm">
             Education → Skills → Projects → Professional Growth
           </p>
 
           <p
             className="
-              text-xs
+              text-[9px]
               uppercase
               tracking-[0.3em]
               text-purple-500
+              sm:text-xs
             "
           >
             Always Learning

@@ -197,6 +197,73 @@
 // }
 
 
+
+
+// "use client";
+
+// import { projects } from "@/data/projects";
+// import ProjectCard from "./ProjectCard";
+// import TextReveal from "./TextReveal";
+
+// export default function Projects() {
+//   return (
+//     <section
+//       id="projects"
+//       className="bg-[var(--bg)] text-[var(--text)] py-20 md:py-24"
+//     >
+//       <div className="max-w-[1500px] mx-auto px-6 md:px-10 lg:px-16">
+
+//         {/* Header */}
+//         <div className="mb-12 md:mb-16">
+
+//           <div className="flex items-center gap-5">
+
+//             <span className="text-xs uppercase tracking-[0.35em] text-neutral-500">
+//               06 / PROJECTS
+//             </span>
+
+//             <div className="h-px flex-1 bg-[var(--border)]" />
+
+//           </div>
+
+//           <TextReveal splitBy="chars" stagger={0.03}>
+//             <h2
+//               className="
+//                 mt-8
+//                 text-5xl
+//                 md:text-7xl
+//                 lg:text-[6rem]
+//                 font-light
+//                 tracking-[-0.08em]
+//                 leading-none
+//               "
+//             >
+//               Selected Works
+//             </h2>
+//           </TextReveal>
+
+//         </div>
+
+//         {/* Projects */}
+//         <div className="space-y-6 md:space-y-8">
+
+//           {projects.map((project, index) => (
+//             <ProjectCard
+//               key={project.slug}
+//               project={project}
+//               index={index}
+//             />
+//           ))}
+
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
 "use client";
 
 import { projects } from "@/data/projects";
@@ -207,16 +274,39 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-[var(--bg)] text-[var(--text)] py-20 md:py-24"
+      className="
+        bg-[var(--bg)]
+        text-[var(--text)]
+        py-10
+        sm:py-12
+        md:py-14
+      "
     >
-      <div className="max-w-[1500px] mx-auto px-6 md:px-10 lg:px-16">
+      <div
+        className="
+          mx-auto
+          max-w-[1500px]
+          px-6
+          sm:px-8
+          md:px-10
+          lg:px-16
+        "
+      >
 
-        {/* Header */}
-        <div className="mb-12 md:mb-16">
+        {/* HEADER */}
+        <div className="mb-7 sm:mb-8 md:mb-10">
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
 
-            <span className="text-xs uppercase tracking-[0.35em] text-neutral-500">
+            <span
+              className="
+                text-[9px]
+                uppercase
+                tracking-[0.35em]
+                text-neutral-500
+                sm:text-xs
+              "
+            >
               06 / PROJECTS
             </span>
 
@@ -227,13 +317,14 @@ export default function Projects() {
           <TextReveal splitBy="chars" stagger={0.03}>
             <h2
               className="
-                mt-8
-                text-5xl
-                md:text-7xl
-                lg:text-[6rem]
+                mt-4
+                text-4xl
                 font-light
-                tracking-[-0.08em]
                 leading-none
+                tracking-[-0.07em]
+                sm:text-5xl
+                md:text-6xl
+                lg:text-[5rem]
               "
             >
               Selected Works
@@ -242,15 +333,32 @@ export default function Projects() {
 
         </div>
 
-        {/* Projects */}
-        <div className="space-y-6 md:space-y-8">
+        {/* PROJECT CARDS */}
+        <div className="space-y-4 sm:space-y-5 md:space-y-6">
 
           {projects.map((project, index) => (
-            <ProjectCard
+
+            <div
               key={project.slug}
-              project={project}
-              index={index}
-            />
+              className="
+                gradient-card
+                transition-transform
+                duration-500
+                hover:-translate-y-1
+              "
+            >
+
+              <div className="gradient-card-inner">
+
+                <ProjectCard
+                  project={project}
+                  index={index}
+                />
+
+              </div>
+
+            </div>
+
           ))}
 
         </div>
