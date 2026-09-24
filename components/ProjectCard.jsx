@@ -725,3 +725,867 @@ export default function ProjectCard({ project, index }) {
     </MagneticHover>
   );
 }
+
+
+
+
+
+
+
+
+// "use client";
+
+// import { useRef } from "react";
+// import gsap, { useGSAP } from "@/libs/gsap";
+// import Link from "next/link";
+
+// import MouseGlow from "./MouseGlow";
+// import MagneticHover from "./MagneticHover";
+// import TextReveal from "./TextReveal";
+
+// export default function ProjectCard({ project, index }) {
+//   const cardRef = useRef(null);
+//   const imageRef = useRef(null);
+//   const overlayRef = useRef(null);
+//   const arrowRef = useRef(null);
+
+//   useGSAP(
+//     () => {
+//       gsap.from(cardRef.current, {
+//         y: 30,
+//         opacity: 0,
+//         duration: 0.7,
+//         delay: index * 0.08,
+//         ease: "power3.out",
+//         clearProps: "transform,opacity",
+//         scrollTrigger: {
+//           trigger: cardRef.current,
+//           start: "top 90%",
+//           once: true,
+//         },
+//       });
+//     },
+//     { scope: cardRef }
+//   );
+
+//   /* ================= HOVER ================= */
+
+//   const enter = () => {
+//     gsap.to(imageRef.current, {
+//       scale: 1.05,
+//       duration: 0.6,
+//       ease: "power3.out",
+//     });
+
+//     gsap.to(overlayRef.current, {
+//       opacity: 0.7,
+//       duration: 0.4,
+//     });
+
+//     gsap.to(arrowRef.current, {
+//       x: 8,
+//       duration: 0.4,
+//       ease: "power3.out",
+//     });
+//   };
+
+//   const leave = () => {
+//     gsap.to(imageRef.current, {
+//       scale: 1,
+//       x: 0,
+//       y: 0,
+//       duration: 0.7,
+//       ease: "power3.out",
+//     });
+
+//     gsap.to(overlayRef.current, {
+//       opacity: 0.45,
+//       duration: 0.4,
+//     });
+
+//     gsap.to(arrowRef.current, {
+//       x: 0,
+//       duration: 0.4,
+//       ease: "power3.out",
+//     });
+//   };
+
+//   /* ================= MOUSE MOVE ================= */
+
+//   const move = (e) => {
+//     if (!cardRef.current || !imageRef.current) return;
+
+//     const rect = cardRef.current.getBoundingClientRect();
+
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+
+//     gsap.to(imageRef.current, {
+//       x: (x - rect.width / 2) / 55,
+//       y: (y - rect.height / 2) / 55,
+//       duration: 0.5,
+//       ease: "power3.out",
+//       overwrite: true,
+//     });
+//   };
+
+//   return (
+//     <MagneticHover strength={7}>
+//       <Link
+//         href={`/project/${project.slug}`}
+//         className="block w-full"
+//       >
+//         {/* ================= GRADIENT OUTER ================= */}
+
+//         <article
+//           ref={cardRef}
+//           onMouseEnter={enter}
+//           onMouseLeave={leave}
+//           onMouseMove={move}
+//           className="
+//             group
+//             relative
+//             w-full
+//             overflow-hidden
+//             rounded-[24px]
+//             p-[1.5px]
+//             transition-all
+//             duration-500
+//             hover:-translate-y-1
+//             hover:shadow-[0_25px_60px_rgba(0,0,0,0.08)]
+//           "
+//         >
+
+//           {/* ================= CONTINUOUS GRADIENT ================= */}
+
+//           <div
+//             className="
+//               pointer-events-none
+//               absolute
+//               inset-[-120%]
+//               animate-spin
+//               [animation-duration:7s]
+//               bg-[conic-gradient(
+//                 from_0deg,
+//                 #ff00cc,
+//                 #7928ff,
+//                 #00e5ff,
+//                 #00ff88,
+//                 #ffe600,
+//                 #ff4d00,
+//                 #ff00cc
+//               )]
+//             "
+//           />
+
+//           {/* ================= INNER CARD ================= */}
+
+//           <div
+//             className="
+//               relative
+//               z-10
+//               overflow-hidden
+//               rounded-[22px]
+//               border
+//               border-[var(--border)]
+//               bg-[var(--surface)]
+//             "
+//           >
+
+//             <MouseGlow />
+
+//             {/* ================= IMAGE ================= */}
+
+//             <div
+//               className="
+//                 relative
+//                 overflow-hidden
+//                 bg-neutral-100
+//               "
+//             >
+//               <img
+//                 ref={imageRef}
+//                 src={project.coverImage}
+//                 alt={project.title}
+//                 className="
+//                   block
+//                   h-[180px]
+//                   w-full
+//                   object-cover
+//                   saturate-[0.9]
+//                   will-change-transform
+//                   sm:h-[200px]
+//                   md:h-[220px]
+//                   lg:h-[240px]
+//                 "
+//               />
+
+//               {/* IMAGE OVERLAY */}
+
+//               <div
+//                 ref={overlayRef}
+//                 className="
+//                   pointer-events-none
+//                   absolute
+//                   inset-0
+//                   bg-gradient-to-t
+//                   from-black/75
+//                   via-black/20
+//                   to-transparent
+//                   opacity-45
+//                 "
+//               />
+
+//               {/* PROJECT NUMBER */}
+
+//               <span
+//                 className="
+//                   absolute
+//                   bottom-4
+//                   left-5
+//                   text-3xl
+//                   font-light
+//                   tracking-[-0.05em]
+//                   text-white
+//                   drop-shadow-lg
+//                   sm:text-4xl
+//                 "
+//               >
+//                 {project.number}
+//               </span>
+
+//               {/* PROJECT LABEL */}
+
+//               <span
+//                 className="
+//                   absolute
+//                   right-4
+//                   top-4
+//                   rounded-full
+//                   border
+//                   border-white/20
+//                   bg-black/30
+//                   px-2.5
+//                   py-1
+//                   text-[8px]
+//                   uppercase
+//                   tracking-[0.2em]
+//                   text-white
+//                   backdrop-blur-md
+//                 "
+//               >
+//                 Project
+//               </span>
+//             </div>
+
+//             {/* ================= CONTENT ================= */}
+
+//             <div
+//               className="
+//                 relative
+//                 p-5
+//                 sm:p-6
+//                 md:p-7
+//               "
+//             >
+
+//               {/* SMALL LABEL */}
+
+//               <p
+//                 className="
+//                   mb-2
+//                   text-[8px]
+//                   font-medium
+//                   uppercase
+//                   tracking-[0.3em]
+//                   text-neutral-400
+//                   sm:text-[9px]
+//                 "
+//               >
+//                 Featured Project
+//               </p>
+
+//               {/* TITLE */}
+
+//               <TextReveal
+//                 splitBy="chars"
+//                 stagger={0.015}
+//               >
+//                 <h2
+//                   className="
+//                     text-2xl
+//                     font-light
+//                     leading-[0.95]
+//                     tracking-[-0.05em]
+//                     sm:text-3xl
+//                     md:text-4xl
+//                     lg:text-[3rem]
+//                     transition-transform
+//                     duration-500
+//                     group-hover:translate-x-1
+//                   "
+//                 >
+//                   {project.title}
+//                 </h2>
+//               </TextReveal>
+
+//               {/* SUBTITLE */}
+
+//               <p
+//                 className="
+//                   mt-2
+//                   text-xs
+//                   font-medium
+//                   text-neutral-500
+//                   sm:text-sm
+//                 "
+//               >
+//                 {project.subtitle}
+//               </p>
+
+//               {/* DESCRIPTION */}
+
+//               <p
+//                 className="
+//                   mt-3
+//                   max-w-3xl
+//                   text-xs
+//                   leading-5
+//                   text-neutral-500
+//                   sm:text-sm
+//                   sm:leading-6
+//                 "
+//               >
+//                 {project.description}
+//               </p>
+
+//               {/* ================= TAGS ================= */}
+
+//               <div
+//                 className="
+//                   mt-4
+//                   flex
+//                   flex-wrap
+//                   gap-1.5
+//                 "
+//               >
+//                 {project.tags.slice(0, 5).map((tag, i) => (
+//                   <span
+//                     key={i}
+//                     className="
+//                       rounded-full
+//                       border
+//                       border-[var(--border)]
+//                       bg-[var(--bg)]
+//                       px-2.5
+//                       py-1
+//                       text-[8px]
+//                       uppercase
+//                       tracking-[0.14em]
+//                       text-neutral-500
+//                       transition-all
+//                       duration-300
+//                       group-hover:border-neutral-400
+//                       group-hover:text-[var(--text)]
+//                     "
+//                   >
+//                     {tag}
+//                   </span>
+//                 ))}
+//               </div>
+
+//               {/* ================= BOTTOM ================= */}
+
+//               <div
+//                 className="
+//                   mt-5
+//                   flex
+//                   items-center
+//                   justify-between
+//                   border-t
+//                   border-[var(--border)]
+//                   pt-4
+//                 "
+//               >
+
+//                 <span
+//                   className="
+//                     text-[8px]
+//                     uppercase
+//                     tracking-[0.22em]
+//                     text-neutral-400
+//                     sm:text-[9px]
+//                   "
+//                 >
+//                   0{index + 1} / Selected Work
+//                 </span>
+
+//                 <div
+//                   className="
+//                     flex
+//                     items-center
+//                     gap-1.5
+//                     text-[9px]
+//                     uppercase
+//                     tracking-[0.18em]
+//                     text-neutral-500
+//                     transition-colors
+//                     duration-300
+//                     group-hover:text-[var(--text)]
+//                   "
+//                 >
+//                   <span>View Project</span>
+
+//                   <span
+//                     ref={arrowRef}
+//                     className="
+//                       text-base
+//                       font-light
+//                     "
+//                   >
+//                     →
+//                   </span>
+//                 </div>
+
+//               </div>
+
+//             </div>
+//           </div>
+//         </article>
+//       </Link>
+//     </MagneticHover>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+// "use client";
+
+// import { useRef } from "react";
+// import gsap, { useGSAP } from "@/libs/gsap";
+// import Link from "next/link";
+
+// import MouseGlow from "./MouseGlow";
+// import MagneticHover from "./MagneticHover";
+// import TextReveal from "./TextReveal";
+
+// export default function ProjectCard({ project, index }) {
+//   const cardRef = useRef(null);
+//   const imageRef = useRef(null);
+//   const overlayRef = useRef(null);
+//   const arrowRef = useRef(null);
+
+//   useGSAP(
+//     () => {
+//       gsap.from(cardRef.current, {
+//         y: 30,
+//         opacity: 0,
+//         duration: 0.7,
+//         delay: index * 0.08,
+//         ease: "power3.out",
+//         clearProps: "transform,opacity",
+//         scrollTrigger: {
+//           trigger: cardRef.current,
+//           start: "top 90%",
+//           once: true,
+//         },
+//       });
+//     },
+//     { scope: cardRef }
+//   );
+
+//   /* ================= HOVER ================= */
+
+//   const enter = () => {
+//     gsap.to(imageRef.current, {
+//       scale: 1.05,
+//       duration: 0.6,
+//       ease: "power3.out",
+//     });
+
+//     gsap.to(overlayRef.current, {
+//       opacity: 0.7,
+//       duration: 0.4,
+//     });
+
+//     gsap.to(arrowRef.current, {
+//       x: 8,
+//       duration: 0.4,
+//       ease: "power3.out",
+//     });
+//   };
+
+//   const leave = () => {
+//     gsap.to(imageRef.current, {
+//       scale: 1,
+//       x: 0,
+//       y: 0,
+//       duration: 0.7,
+//       ease: "power3.out",
+//     });
+
+//     gsap.to(overlayRef.current, {
+//       opacity: 0.45,
+//       duration: 0.4,
+//     });
+
+//     gsap.to(arrowRef.current, {
+//       x: 0,
+//       duration: 0.4,
+//       ease: "power3.out",
+//     });
+//   };
+
+//   /* ================= MOUSE MOVE ================= */
+
+//   const move = (e) => {
+//     if (!cardRef.current || !imageRef.current) return;
+
+//     const rect = cardRef.current.getBoundingClientRect();
+
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+
+//     gsap.to(imageRef.current, {
+//       x: (x - rect.width / 2) / 55,
+//       y: (y - rect.height / 2) / 55,
+//       duration: 0.5,
+//       ease: "power3.out",
+//       overwrite: true,
+//     });
+//   };
+
+//   return (
+//     <MagneticHover strength={7}>
+//       <Link
+//         href={`/project/${project.slug}`}
+//         className="block w-full"
+//       >
+//         {/* ================= GRADIENT OUTER ================= */}
+
+//         <article
+//           ref={cardRef}
+//           onMouseEnter={enter}
+//           onMouseLeave={leave}
+//           onMouseMove={move}
+//           className="
+//             group
+//             relative
+//             w-full
+//             overflow-hidden
+//             rounded-[24px]
+//             p-[1.5px]
+//             transition-all
+//             duration-500
+//             hover:-translate-y-1
+//             hover:shadow-[0_25px_60px_rgba(0,0,0,0.08)]
+//           "
+//         >
+
+//           {/* ================= CONTINUOUS GRADIENT ================= */}
+
+//           <div
+//             className="
+//               pointer-events-none
+//               absolute
+//               inset-[-120%]
+//               animate-spin
+//               [animation-duration:7s]
+//               bg-[conic-gradient(
+//                 from_0deg,
+//                 #ff00cc,
+//                 #7928ff,
+//                 #00e5ff,
+//                 #00ff88,
+//                 #ffe600,
+//                 #ff4d00,
+//                 #ff00cc
+//               )]
+//             "
+//           />
+
+//           {/* ================= INNER CARD ================= */}
+
+//           <div
+//             className="
+//               relative
+//               z-10
+//               overflow-hidden
+//               rounded-[22px]
+//               border
+//               border-[var(--border)]
+//               bg-[var(--surface)]
+//             "
+//           >
+
+//             <MouseGlow />
+
+//             {/* ================= IMAGE ================= */}
+
+//             <div
+//               className="
+//                 relative
+//                 overflow-hidden
+//                 bg-neutral-100
+//               "
+//             >
+//               <img
+//                 ref={imageRef}
+//                 src={project.coverImage}
+//                 alt={project.title}
+//                 className="
+//                   block
+//                   h-[180px]
+//                   w-full
+//                   object-cover
+//                   saturate-[0.9]
+//                   will-change-transform
+//                   sm:h-[200px]
+//                   md:h-[220px]
+//                   lg:h-[240px]
+//                 "
+//               />
+
+//               {/* IMAGE OVERLAY */}
+
+//               <div
+//                 ref={overlayRef}
+//                 className="
+//                   pointer-events-none
+//                   absolute
+//                   inset-0
+//                   bg-gradient-to-t
+//                   from-black/75
+//                   via-black/20
+//                   to-transparent
+//                   opacity-45
+//                 "
+//               />
+
+//               {/* PROJECT NUMBER */}
+
+//               <span
+//                 className="
+//                   absolute
+//                   bottom-4
+//                   left-5
+//                   text-3xl
+//                   font-light
+//                   tracking-[-0.05em]
+//                   text-white
+//                   drop-shadow-lg
+//                   sm:text-4xl
+//                 "
+//               >
+//                 {project.number}
+//               </span>
+
+//               {/* PROJECT LABEL */}
+
+//               <span
+//                 className="
+//                   absolute
+//                   right-4
+//                   top-4
+//                   rounded-full
+//                   border
+//                   border-white/20
+//                   bg-black/30
+//                   px-2.5
+//                   py-1
+//                   text-[8px]
+//                   uppercase
+//                   tracking-[0.2em]
+//                   text-white
+//                   backdrop-blur-md
+//                 "
+//               >
+//                 Project
+//               </span>
+//             </div>
+
+//             {/* ================= CONTENT ================= */}
+
+//             <div
+//               className="
+//                 relative
+//                 p-5
+//                 sm:p-6
+//                 md:p-7
+//               "
+//             >
+
+//               {/* SMALL LABEL */}
+
+//               <p
+//                 className="
+//                   mb-2
+//                   text-[8px]
+//                   font-medium
+//                   uppercase
+//                   tracking-[0.3em]
+//                   text-neutral-400
+//                   sm:text-[9px]
+//                 "
+//               >
+//                 Featured Project
+//               </p>
+
+//               {/* TITLE */}
+
+//               <TextReveal
+//                 splitBy="chars"
+//                 stagger={0.015}
+//               >
+//                 <h2
+//                   className="
+//                     text-2xl
+//                     font-light
+//                     leading-[0.95]
+//                     tracking-[-0.05em]
+//                     sm:text-3xl
+//                     md:text-4xl
+//                     lg:text-[3rem]
+//                     transition-transform
+//                     duration-500
+//                     group-hover:translate-x-1
+//                   "
+//                 >
+//                   {project.title}
+//                 </h2>
+//               </TextReveal>
+
+//               {/* SUBTITLE */}
+
+//               <p
+//                 className="
+//                   mt-2
+//                   text-xs
+//                   font-medium
+//                   text-neutral-500
+//                   sm:text-sm
+//                 "
+//               >
+//                 {project.subtitle}
+//               </p>
+
+//               {/* DESCRIPTION */}
+
+//               <p
+//                 className="
+//                   mt-3
+//                   max-w-3xl
+//                   text-xs
+//                   leading-5
+//                   text-neutral-500
+//                   sm:text-sm
+//                   sm:leading-6
+//                 "
+//               >
+//                 {project.description}
+//               </p>
+
+//               {/* ================= TAGS ================= */}
+
+//               <div
+//                 className="
+//                   mt-4
+//                   flex
+//                   flex-wrap
+//                   gap-1.5
+//                 "
+//               >
+//                 {project.tags.slice(0, 5).map((tag, i) => (
+//                   <span
+//                     key={i}
+//                     className="
+//                       rounded-full
+//                       border
+//                       border-[var(--border)]
+//                       bg-[var(--bg)]
+//                       px-2.5
+//                       py-1
+//                       text-[8px]
+//                       uppercase
+//                       tracking-[0.14em]
+//                       text-neutral-500
+//                       transition-all
+//                       duration-300
+//                       group-hover:border-neutral-400
+//                       group-hover:text-[var(--text)]
+//                     "
+//                   >
+//                     {tag}
+//                   </span>
+//                 ))}
+//               </div>
+
+//               {/* ================= BOTTOM ================= */}
+
+//               <div
+//                 className="
+//                   mt-5
+//                   flex
+//                   items-center
+//                   justify-between
+//                   border-t
+//                   border-[var(--border)]
+//                   pt-4
+//                 "
+//               >
+
+//                 <span
+//                   className="
+//                     text-[8px]
+//                     uppercase
+//                     tracking-[0.22em]
+//                     text-neutral-400
+//                     sm:text-[9px]
+//                   "
+//                 >
+//                   0{index + 1} / Selected Work
+//                 </span>
+
+//                 <div
+//                   className="
+//                     flex
+//                     items-center
+//                     gap-1.5
+//                     text-[9px]
+//                     uppercase
+//                     tracking-[0.18em]
+//                     text-neutral-500
+//                     transition-colors
+//                     duration-300
+//                     group-hover:text-[var(--text)]
+//                   "
+//                 >
+//                   <span>View Project</span>
+
+//                   <span
+//                     ref={arrowRef}
+//                     className="
+//                       text-base
+//                       font-light
+//                     "
+//                   >
+//                     →
+//                   </span>
+//                 </div>
+
+//               </div>
+
+//             </div>
+//           </div>
+//         </article>
+//       </Link>
+//     </MagneticHover>
+//   );
+// }

@@ -1891,31 +1891,633 @@
 //   );
 // }
 
+
+
+
+
+
+
+// "use client";
+
+// import { ArrowUpRight, Code2, MapPin, Sparkles, UserRound } from "lucide-react";
+// import { useRef } from "react";
+// import gsap, { useGSAP } from "@/libs/gsap";
+
+// export default function AboutIntro() {
+//   const sectionRef = useRef(null);
+
+//   useGSAP(
+//     () => {
+//       gsap.from(".about-reveal", {
+//         opacity: 0,
+//         y: 50,
+//         duration: 0.9,
+//         stagger: 0.1,
+//         ease: "power4.out",
+//         scrollTrigger: {
+//           trigger: sectionRef.current,
+//           start: "top 78%",
+//           once: true,
+//         },
+//       });
+//     },
+//     { scope: sectionRef },
+//   );
+
+//   return (
+//     <section
+//       ref={sectionRef}
+//       id="about"
+//       className="
+//         relative
+//         w-full
+//         overflow-hidden
+//        bg-white
+//         py-20
+//         text-black
+//         transition-colors
+//         duration-500
+//           dark:bg-[#0a0a0a]
+//         dark:text-white
+//         md:py-24
+//       "
+//     >
+//       <div
+//         className="
+//           mx-auto
+//           max-w-[1400px]
+//           px-5
+//           sm:px-7
+//           md:px-10
+//           lg:px-14
+//         "
+//       >
+//         {/* ================= HEADER ================= */}
+
+//         <div className="about-reveal">
+//           <p
+//             className="
+//               text-[10px]
+//               font-medium
+//               uppercase
+//               tracking-[0.4em]
+//               text-neutral-600
+//               dark:text-neutral-400
+               
+//             "
+//           >
+//             02 / ABOUT ME
+//           </p>
+
+//           <div
+//             className="
+//               mt-4
+//               h-[2px]
+//               w-20
+//               rounded-full
+//               bg-gradient-to-r
+//               from-fuchsia-500
+//               via-cyan-400
+//               to-emerald-400
+//               animate-gradient
+//             "
+//             style={{ backgroundSize: "200% 200%" }}
+//           />
+//         </div>
+
+//         {/* ================= MAIN GRID ================= */}
+
+//         <div
+//           className="
+//             mt-14
+//             grid
+//             grid-cols-1
+//             gap-10
+//             lg:grid-cols-12
+//             lg:items-start
+//             lg:gap-12
+//           "
+//         >
+//           {/* ================================================= */}
+//           {/* LEFT IMAGE */}
+//           {/* ================================================= */}
+
+//           <div
+//             className="
+//               about-reveal
+//               flex
+//               flex-col
+//               lg:col-span-4
+//             "
+//           >
+//             {/* IMAGE GRADIENT BORDER */}
+
+//             <div
+//               className="
+//                 gradient-border
+//                 relative
+//                 rounded-[26px]
+//                 p-[2px]
+//               "
+//             >
+//               <div
+//                 className="
+//                   overflow-hidden
+//                   rounded-[24px]
+//                    bg-[var(--surface)]
+//                    transition-colors
+//                    duration-500
+                  
+//                 "
+//               >
+//                 <div
+//                   className="
+//                     relative
+//                     aspect-[4/5]
+//                     overflow-hidden
+//                   "
+//                 >
+//                   <img
+//                     src="/profile.jpg"
+//                     alt="Abhishek Yadav"
+//                     className="
+//                       h-full
+//                       w-full
+//                       object-cover
+//                       grayscale-[8%]
+//                       transition-all
+//                       duration-700
+//                       hover:scale-105
+//                       hover:grayscale-0
+//                     "
+//                   />
+
+//                   {/* IMAGE OVERLAY */}
+
+//                   <div
+//                     className="
+//                       pointer-events-none
+//                       absolute
+//                       inset-0
+//                       bg-gradient-to-t
+//                       from-black/50
+//                       via-transparent
+//                       to-transparent
+//                     "
+//                   />
+
+//                   {/* CONTINUOUS IMAGE GRADIENT */}
+
+//                   <div
+//                     className="
+//                       pointer-events-none
+//                       absolute
+//                       bottom-0
+//                       left-0
+//                       h-[4px]
+//                       w-full
+//                       bg-gradient-to-r
+//                       from-fuchsia-500
+//                       via-cyan-400
+//                       to-emerald-400
+//                       animate-gradient
+//                     "
+//                     style={{ backgroundSize: "200% 200%" }}
+//                   />
+//                 </div>
+
+//                 {/* NAME */}
+
+//                 <div
+//                   className="
+//                     bg-white
+//                     px-5
+//                     py-4
+//                     text-center
+//                     dark:bg-[#151515]
+//                   "
+//                 >
+//                   <h3
+//                     className="
+//                       text-base
+//                       font-semibold
+//                       uppercase
+//                       tracking-[0.16em]
+//                       text-black
+//                       dark:text-white
+//                       md:text-lg
+//                     "
+//                   >
+//                     Abhishek Yadav
+//                   </h3>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* ================= RESUME BUTTONS ================= */}
+
+//             <div className="mt-5 flex flex-wrap gap-3">
+//               <a
+//                 href="/resume.pdf"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 className="
+//                   inline-flex
+//                   items-center
+//                   gap-2
+//                   rounded-full
+//                   border
+//                   border-neutral-300
+//                   bg-white
+//                   px-5
+//                   py-2.5
+//                   text-xs
+//                   font-medium
+//                   text-black
+//                   transition-all
+//                   duration-300
+//                   hover:bg-black
+//                   hover:text-white
+//                   dark:border-neutral-700
+//                   dark:bg-[#111111]
+//                   dark:text-white
+//                   dark:hover:bg-white
+//                   dark:hover:text-black
+//                 "
+//               >
+//                 View Resume
+//                 <ArrowUpRight size={15} />
+//               </a>
+
+//               <a
+//                 href="/resume.pdf"
+//                 download
+//                 className="
+//                   inline-flex
+//                   items-center
+//                   gap-2
+//                   rounded-full
+//                   bg-black
+//                   px-5
+//                   py-2.5
+//                   text-xs
+//                   font-medium
+//                   text-white
+//                   transition-all
+//                   duration-300
+//                   hover:scale-105
+//                   dark:bg-white
+//                   dark:text-black
+//                 "
+//               >
+//                 Download Resume
+//               </a>
+//             </div>
+//           </div>
+
+//           {/* ================================================= */}
+//           {/* RIGHT CONTENT */}
+//           {/* ================================================= */}
+
+//           <div
+//             className="
+//               about-reveal
+//               flex
+//               flex-col
+//               lg:col-span-8
+//             "
+//           >
+//             {/* ================= HEADING ================= */}
+
+//             <div>
+//               <h2
+//                 className="
+//                   max-w-4xl
+//                   text-[2.2rem]
+//                   font-medium
+//                   leading-[1]
+//                   tracking-[-0.055em]
+//                   text-black
+//                   dark:text-white
+//                   sm:text-[2.7rem]
+//                   md:text-[3.2rem]
+//                   lg:text-[3.6rem]
+//                 "
+//               >
+//                 <span
+//                   className="
+//                     bg-gradient-to-r
+//                     from-fuchsia-500
+//                     via-cyan-400
+//                     to-emerald-400
+//                     bg-clip-text
+//                     text-transparent
+//                     animate-gradient
+//                   "
+//                   style={{ backgroundSize: "200% 200%" }}
+//                 >
+//                   Crafting digital experiences
+//                 </span>
+
+//                 <br />
+
+//                 <span className="text-black dark:text-neutral-200">
+//                   that people remember.
+//                 </span>
+//               </h2>
+//             </div>
+
+//             {/* ================= DESCRIPTION ================= */}
+
+//             <div className="mt-5 max-w-3xl space-y-3">
+//               <p
+//                 className="
+//                   text-sm
+//                   leading-6
+//                   text-neutral-700
+//                   dark:text-neutral-300
+//                   md:text-[15px]
+//                   md:leading-6
+//                 "
+//               >
+//                 <strong className="text-black dark:text-white">
+//                   Hello! I'm Abhishek Yadav,
+//                 </strong>{" "}
+//                 a passionate Full-Stack Developer focused on building modern,
+//                 scalable and user-friendly web applications.
+//               </p>
+
+//               <p
+//                 className="
+//                   text-sm
+//                   leading-6
+//                   text-neutral-700
+//                   dark:text-neutral-300
+//                   md:text-[15px]
+//                   md:leading-6
+//                 "
+//               >
+//                 I work with React, Next.js, Node.js, Express.js and MongoDB,
+//                 while also exploring AI-powered applications and intelligent
+//                 workflows.
+//               </p>
+//             </div>
+
+//             {/* ================= COLOR ACCENTS ================= */}
+
+//             <div className="mt-6 flex gap-2">
+//               <GradientLine gradient="from-fuchsia-500 via-purple-500 to-pink-500" />
+
+//               <GradientLine gradient="from-emerald-400 via-cyan-400 to-blue-500" />
+
+//               <GradientLine gradient="from-orange-400 via-pink-500 to-fuchsia-500" />
+//             </div>
+
+//             {/* ================= INFO CARDS ================= */}
+
+//             <div
+//               className="
+//                 mt-6
+//                 grid
+//                 grid-cols-1
+//                 gap-3
+//                 sm:grid-cols-2
+//               "
+//             >
+//               <InfoCard
+//                 icon={<UserRound size={19} />}
+//                 label="Role"
+//                 value="Full-Stack Developer"
+//                 iconColor="text-yellow-500 dark:text-yellow-400"
+//                 gradient="from-yellow-400 via-orange-400 to-pink-500"
+//               />
+
+//               <InfoCard
+//                 icon={<Code2 size={19} />}
+//                 label="Focus"
+//                 value="React / Next.js / Node.js"
+//                 iconColor="text-emerald-500 dark:text-emerald-400"
+//                 gradient="from-emerald-400 via-cyan-400 to-blue-500"
+//               />
+
+//               <InfoCard
+//                 icon={<Sparkles size={19} />}
+//                 label="Expertise"
+//                 value="AI & RAG Applications"
+//                 iconColor="text-fuchsia-500 dark:text-fuchsia-400"
+//                 gradient="from-fuchsia-500 via-purple-500 to-pink-500"
+//               />
+
+//               <InfoCard
+//                 icon={<MapPin size={19} />}
+//                 label="Availability"
+//                 value="Open to Opportunities"
+//                 iconColor="text-cyan-500 dark:text-cyan-400"
+//                 gradient="from-cyan-400 via-blue-500 to-violet-500"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// /* ========================================================= */
+// /* GRADIENT LINE */
+// /* ========================================================= */
+
+// function GradientLine({ gradient }) {
+//   return (
+//     <span
+//       className={`
+//         h-2
+//         w-12
+//         rounded-full
+//         bg-gradient-to-r
+//         ${gradient}
+//         animate-gradient
+//       `}
+//       style={{ backgroundSize: "200% 200%" }}
+//     />
+//   );
+// }
+
+// /* ========================================================= */
+// /* INFO CARD */
+// /* ========================================================= */
+
+// function InfoCard({ icon, label, value, iconColor, gradient }) {
+//   return (
+//     <div
+//       className="
+//         gradient-border
+//         rounded-2xl
+//         p-[1.5px]
+//       "
+//     >
+//       <div
+//         className="
+//           group
+//           relative
+//           h-full
+//           overflow-hidden
+//           rounded-[15px]
+//            bg-[var(--surface)]
+//           p-4
+//           transition-all
+//           duration-500
+//           hover:-translate-y-1
+          
+//         "
+//       >
+//         {/* TOP */}
+
+//         <div className="flex items-start justify-between">
+//           <div
+//             className={`
+//               flex
+//               h-9
+//               w-9
+//               items-center
+//               justify-center
+//               rounded-xl
+//               bg-neutral-100
+//               ${iconColor}
+//               dark:bg-[#1a1a1a]
+//             `}
+//           >
+//             {icon}
+//           </div>
+
+//           <ArrowUpRight
+//             size={17}
+//             className="
+//               text-neutral-600
+//               transition-all
+//               duration-300
+//               group-hover:-translate-y-1
+//               group-hover:translate-x-1
+//               dark:text-neutral-400
+//             "
+//           />
+//         </div>
+
+//         {/* LABEL */}
+
+//         <p
+//           className="
+//             mt-4
+//             text-[9px]
+//             font-semibold
+//             uppercase
+//             tracking-[0.25em]
+//             text-neutral-600
+//             dark:text-neutral-400
+//           "
+//         >
+//           {label}
+//         </p>
+
+//         {/* VALUE */}
+
+//         <h3
+//           className="
+//             mt-1.5
+//             text-sm
+//             font-medium
+//             md:text-[15px]
+//           "
+//         >
+//           <span
+//             className="
+//               bg-gradient-to-r
+//               from-fuchsia-600
+//               via-cyan-600
+//               to-emerald-600
+//               bg-clip-text
+//               text-transparent
+//               animate-gradient
+//               dark:from-fuchsia-400
+//               dark:via-cyan-300
+//               dark:to-emerald-300
+//             "
+//             style={{ backgroundSize: "200% 200%" }}
+//           >
+//             {value}
+//           </span>
+//         </h3>
+
+//         {/* CONTINUOUS CARD GRADIENT */}
+
+//         <div
+//           className={`
+//             pointer-events-none
+//             absolute
+//             bottom-0
+//             left-0
+//             h-[3px]
+//             w-full
+//             bg-gradient-to-r
+//             ${gradient}
+//             animate-gradient
+//           `}
+//           style={{ backgroundSize: "200% 200%" }}
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
 "use client";
 
-import { ArrowUpRight, Code2, MapPin, Sparkles, UserRound } from "lucide-react";
+import {
+  ArrowUpRight,
+  Download,
+  GraduationCap,
+  MapPin,
+  Code2,
+  Mail,
+  UserRound,
+} from "lucide-react";
 import { useRef } from "react";
 import gsap, { useGSAP } from "@/libs/gsap";
+
+const skills = [
+  "React.js",
+  "JavaScript",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "Next.js",
+  "Tailwind CSS",
+  "Git & GitHub",
+  "REST APIs",
+  "Postman",
+];
 
 export default function AboutIntro() {
   const sectionRef = useRef(null);
 
   useGSAP(
     () => {
-      gsap.from(".about-reveal", {
+      gsap.from(".about-item", {
         opacity: 0,
-        y: 50,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: "power4.out",
+        y: 35,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 78%",
+          start: "top 80%",
           once: true,
         },
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef }
   );
 
   return (
@@ -1926,109 +2528,249 @@ export default function AboutIntro() {
         relative
         w-full
         overflow-hidden
-       bg-white
-        py-20
-        text-black
-        transition-colors
-        duration-500
-          dark:bg-[#0a0a0a]
-        dark:text-white
+        bg-[#070d19]
+        text-white
+        py-16
+        sm:py-20
         md:py-24
+        lg:py-28
       "
     >
+      {/* BACKGROUND GLOW */}
+
       <div
         className="
+          pointer-events-none
+          absolute
+          -right-40
+          top-20
+          h-[500px]
+          w-[500px]
+          rounded-full
+          bg-blue-600/10
+          blur-[120px]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-40
+          bottom-0
+          h-[400px]
+          w-[400px]
+          rounded-full
+          bg-purple-600/10
+          blur-[120px]
+        "
+      />
+
+      <div
+        className="
+          relative
+          z-10
           mx-auto
           max-w-[1400px]
           px-5
-          sm:px-7
+          sm:px-8
           md:px-10
           lg:px-14
         "
       >
         {/* ================= HEADER ================= */}
 
-        <div className="about-reveal">
-          <p
-            className="
-              text-[10px]
-              font-medium
-              uppercase
-              tracking-[0.4em]
-              text-neutral-600
-              dark:text-neutral-400
-               
-            "
-          >
-            02 / ABOUT ME
-          </p>
-
+        <div className="about-item mb-10 md:mb-14">
           <div
             className="
-              mt-4
-              h-[2px]
-              w-20
+              inline-flex
+              items-center
+              gap-2
               rounded-full
-              bg-gradient-to-r
-              from-fuchsia-500
-              via-cyan-400
-              to-emerald-400
-              animate-gradient
+              border
+              border-blue-400/60
+              px-5
+              py-2
+              text-sm
+              font-medium
+              text-blue-400
             "
-            style={{ backgroundSize: "200% 200%" }}
-          />
+          >
+            <UserRound size={17} />
+            About Me
+          </div>
         </div>
 
-        {/* ================= MAIN GRID ================= */}
+        {/* ================= MAIN ================= */}
 
         <div
           className="
-            mt-14
             grid
             grid-cols-1
-            gap-10
-            lg:grid-cols-12
-            lg:items-start
-            lg:gap-12
+            items-center
+            gap-12
+            lg:grid-cols-[1.05fr_0.95fr]
+            lg:gap-16
           "
         >
-          {/* ================================================= */}
-          {/* LEFT IMAGE */}
-          {/* ================================================= */}
+          {/* ================= LEFT ================= */}
 
-          <div
-            className="
-              about-reveal
-              flex
-              flex-col
-              lg:col-span-4
-            "
-          >
-            {/* IMAGE GRADIENT BORDER */}
+          <div className="about-item">
+            <h1
+              className="
+                text-5xl
+                font-semibold
+                leading-[0.95]
+                tracking-[-0.06em]
+                sm:text-6xl
+                md:text-7xl
+                lg:text-[5.8rem]
+              "
+            >
+              Hi, I'm
+              <br />
+
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-blue-400
+                  via-violet-400
+                  to-cyan-400
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Abhishek Yadav
+              </span>
+            </h1>
+
+            {/* ROLE */}
 
             <div
               className="
-                gradient-border
-                relative
-                rounded-[26px]
-                p-[2px]
+                mt-6
+                flex
+                flex-wrap
+                items-center
+                gap-3
+                text-base
+                font-medium
+                text-neutral-200
+                sm:text-lg
               "
             >
+              <span>Full Stack Developer</span>
+
+              <span className="text-blue-400">|</span>
+
+              <span>MERN Stack Enthusiast</span>
+            </div>
+
+            {/* SMALL LINE */}
+
+            <div
+              className="
+                mt-7
+                h-1
+                w-20
+                rounded-full
+                bg-gradient-to-r
+                from-blue-500
+                via-violet-500
+                to-cyan-400
+              "
+            />
+
+            {/* DESCRIPTION */}
+
+            <div
+              className="
+                mt-7
+                max-w-2xl
+                space-y-3
+                text-base
+                leading-7
+                text-neutral-300
+                md:text-lg
+                md:leading-8
+              "
+            >
+              <p>
+                I'm a passionate Full Stack Developer focused on building
+                modern, scalable and user-friendly web applications.
+              </p>
+
+              <p>
+                I enjoy turning ideas into real-world products using
+                technologies like{" "}
+                <span className="font-medium text-white">
+                  React, Next.js, Node.js, Express.js and MongoDB.
+                </span>
+              </p>
+
+              <p>
+                I'm always learning new technologies and improving my skills
+                to create better, faster and more user-friendly solutions.
+              </p>
+            </div>
+          </div>
+
+          {/* ================= RIGHT IMAGE ================= */}
+
+          <div
+            className="
+              about-item
+              flex
+              justify-center
+              lg:justify-end
+            "
+          >
+            <div className="relative">
+              {/* OUTER GLOW */}
+
               <div
                 className="
-                  overflow-hidden
-                  rounded-[24px]
-                   bg-[var(--surface)]
-                   transition-colors
-                   duration-500
-                  
+                  absolute
+                  -inset-4
+                  rounded-full
+                  bg-gradient-to-r
+                  from-blue-500
+                  via-violet-500
+                  to-cyan-400
+                  opacity-20
+                  blur-2xl
+                "
+              />
+
+              {/* GRADIENT RING */}
+
+              <div
+                className="
+                  relative
+                  rounded-full
+                  bg-gradient-to-r
+                  from-blue-400
+                  via-violet-500
+                  to-cyan-400
+                  p-[6px]
                 "
               >
+                {/* IMAGE */}
+
                 <div
                   className="
                     relative
-                    aspect-[4/5]
+                    h-[280px]
+                    w-[280px]
                     overflow-hidden
+                    rounded-full
+                    bg-[#111827]
+                    sm:h-[350px]
+                    sm:w-[350px]
+                    md:h-[400px]
+                    md:w-[400px]
+                    lg:h-[430px]
+                    lg:w-[430px]
                   "
                 >
                   <img
@@ -2038,11 +2780,10 @@ export default function AboutIntro() {
                       h-full
                       w-full
                       object-cover
-                      grayscale-[8%]
-                      transition-all
+                      object-center
+                      transition-transform
                       duration-700
                       hover:scale-105
-                      hover:grayscale-0
                     "
                   />
 
@@ -2054,263 +2795,259 @@ export default function AboutIntro() {
                       absolute
                       inset-0
                       bg-gradient-to-t
-                      from-black/50
+                      from-[#070d19]/30
                       via-transparent
                       to-transparent
                     "
                   />
-
-                  {/* CONTINUOUS IMAGE GRADIENT */}
-
-                  <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      bottom-0
-                      left-0
-                      h-[4px]
-                      w-full
-                      bg-gradient-to-r
-                      from-fuchsia-500
-                      via-cyan-400
-                      to-emerald-400
-                      animate-gradient
-                    "
-                    style={{ backgroundSize: "200% 200%" }}
-                  />
-                </div>
-
-                {/* NAME */}
-
-                <div
-                  className="
-                    bg-white
-                    px-5
-                    py-4
-                    text-center
-                    dark:bg-[#151515]
-                  "
-                >
-                  <h3
-                    className="
-                      text-base
-                      font-semibold
-                      uppercase
-                      tracking-[0.16em]
-                      text-black
-                      dark:text-white
-                      md:text-lg
-                    "
-                  >
-                    Abhishek Yadav
-                  </h3>
                 </div>
               </div>
-            </div>
 
-            {/* ================= RESUME BUTTONS ================= */}
+              {/* FLOATING CODE ICON */}
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
                 className="
-                  inline-flex
+                  absolute
+                  bottom-5
+                  right-3
+                  flex
+                  h-12
+                  w-12
                   items-center
-                  gap-2
+                  justify-center
                   rounded-full
                   border
-                  border-neutral-300
-                  bg-white
-                  px-5
-                  py-2.5
-                  text-xs
-                  font-medium
-                  text-black
-                  transition-all
-                  duration-300
-                  hover:bg-black
-                  hover:text-white
-                  dark:border-neutral-700
-                  dark:bg-[#111111]
-                  dark:text-white
-                  dark:hover:bg-white
-                  dark:hover:text-black
+                  border-violet-400/40
+                  bg-[#0b1220]
+                  text-violet-400
+                  shadow-xl
+                  sm:bottom-8
+                  sm:right-5
                 "
               >
-                View Resume
-                <ArrowUpRight size={15} />
-              </a>
+                <Code2 size={22} />
+              </div>
 
-              <a
-                href="/resume.pdf"
-                download
+              {/* DECORATIVE CIRCLES */}
+
+              <div
                 className="
-                  inline-flex
-                  items-center
-                  gap-2
+                  absolute
+                  -left-4
+                  top-8
+                  h-20
+                  w-20
                   rounded-full
-                  bg-black
-                  px-5
-                  py-2.5
-                  text-xs
-                  font-medium
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:scale-105
-                  dark:bg-white
-                  dark:text-black
+                  bg-blue-500/20
+                  blur-[1px]
                 "
-              >
-                Download Resume
-              </a>
+              />
+
+              <div
+                className="
+                  absolute
+                  -right-3
+                  top-1/2
+                  h-12
+                  w-12
+                  rounded-full
+                  bg-violet-500/40
+                "
+              />
             </div>
           </div>
+        </div>
 
-          {/* ================================================= */}
-          {/* RIGHT CONTENT */}
-          {/* ================================================= */}
+        {/* ================= INFO ROW ================= */}
+
+        <div
+          className="
+            about-item
+            mt-14
+            grid
+            grid-cols-1
+            gap-6
+            border-t
+            border-white/10
+            pt-8
+            sm:grid-cols-3
+            md:mt-16
+          "
+        >
+          {/* BCA */}
+
+          <InfoItem
+            icon={<GraduationCap size={32} />}
+            title="BCA Graduate"
+            subtitle="Bachelor of Computer Applications"
+            color="text-blue-400"
+          />
+
+          {/* LOCATION */}
+
+          <InfoItem
+            icon={<MapPin size={32} />}
+            title="India"
+            subtitle="Open to Relocation"
+            color="text-violet-400"
+          />
+
+          {/* EXPERIENCE */}
+
+          <InfoItem
+            icon={<Code2 size={32} />}
+            title="Fresher"
+            subtitle="0 Years Experience"
+            color="text-cyan-400"
+          />
+        </div>
+
+        {/* ================= SKILLS ================= */}
+
+        <div className="about-item mt-12 md:mt-14">
+          <h2
+            className="
+              text-2xl
+              font-semibold
+              tracking-tight
+              sm:text-3xl
+            "
+          >
+            My Skills
+          </h2>
 
           <div
             className="
-              about-reveal
+              mt-3
+              h-1
+              w-14
+              rounded-full
+              bg-gradient-to-r
+              from-blue-500
+              to-violet-500
+            "
+          />
+
+          <div
+            className="
+              mt-7
               flex
-              flex-col
-              lg:col-span-8
+              flex-wrap
+              gap-3
             "
           >
-            {/* ================= HEADING ================= */}
-
-            <div>
-              <h2
+            {skills.map((skill, index) => (
+              <div
+                key={skill}
                 className="
-                  max-w-4xl
-                  text-[2.2rem]
-                  font-medium
-                  leading-[1]
-                  tracking-[-0.055em]
-                  text-black
-                  dark:text-white
-                  sm:text-[2.7rem]
-                  md:text-[3.2rem]
-                  lg:text-[3.6rem]
+                  group
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  border
+                  border-blue-400/20
+                  bg-white/[0.02]
+                  px-5
+                  py-3
+                  text-sm
+                  text-neutral-200
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-blue-400/60
+                  hover:bg-blue-500/10
+                  hover:text-white
                 "
               >
                 <span
                   className="
+                    h-2
+                    w-2
+                    rounded-full
                     bg-gradient-to-r
-                    from-fuchsia-500
-                    via-cyan-400
-                    to-emerald-400
-                    bg-clip-text
-                    text-transparent
-                    animate-gradient
+                    from-blue-400
+                    to-violet-500
+                    transition-transform
+                    duration-300
+                    group-hover:scale-150
                   "
-                  style={{ backgroundSize: "200% 200%" }}
-                >
-                  Crafting digital experiences
-                </span>
+                />
 
-                <br />
-
-                <span className="text-black dark:text-neutral-200">
-                  that people remember.
-                </span>
-              </h2>
-            </div>
-
-            {/* ================= DESCRIPTION ================= */}
-
-            <div className="mt-5 max-w-3xl space-y-3">
-              <p
-                className="
-                  text-sm
-                  leading-6
-                  text-neutral-700
-                  dark:text-neutral-300
-                  md:text-[15px]
-                  md:leading-6
-                "
-              >
-                <strong className="text-black dark:text-white">
-                  Hello! I'm Abhishek Yadav,
-                </strong>{" "}
-                a passionate Full-Stack Developer focused on building modern,
-                scalable and user-friendly web applications.
-              </p>
-
-              <p
-                className="
-                  text-sm
-                  leading-6
-                  text-neutral-700
-                  dark:text-neutral-300
-                  md:text-[15px]
-                  md:leading-6
-                "
-              >
-                I work with React, Next.js, Node.js, Express.js and MongoDB,
-                while also exploring AI-powered applications and intelligent
-                workflows.
-              </p>
-            </div>
-
-            {/* ================= COLOR ACCENTS ================= */}
-
-            <div className="mt-6 flex gap-2">
-              <GradientLine gradient="from-fuchsia-500 via-purple-500 to-pink-500" />
-
-              <GradientLine gradient="from-emerald-400 via-cyan-400 to-blue-500" />
-
-              <GradientLine gradient="from-orange-400 via-pink-500 to-fuchsia-500" />
-            </div>
-
-            {/* ================= INFO CARDS ================= */}
-
-            <div
-              className="
-                mt-6
-                grid
-                grid-cols-1
-                gap-3
-                sm:grid-cols-2
-              "
-            >
-              <InfoCard
-                icon={<UserRound size={19} />}
-                label="Role"
-                value="Full-Stack Developer"
-                iconColor="text-yellow-500 dark:text-yellow-400"
-                gradient="from-yellow-400 via-orange-400 to-pink-500"
-              />
-
-              <InfoCard
-                icon={<Code2 size={19} />}
-                label="Focus"
-                value="React / Next.js / Node.js"
-                iconColor="text-emerald-500 dark:text-emerald-400"
-                gradient="from-emerald-400 via-cyan-400 to-blue-500"
-              />
-
-              <InfoCard
-                icon={<Sparkles size={19} />}
-                label="Expertise"
-                value="AI & RAG Applications"
-                iconColor="text-fuchsia-500 dark:text-fuchsia-400"
-                gradient="from-fuchsia-500 via-purple-500 to-pink-500"
-              />
-
-              <InfoCard
-                icon={<MapPin size={19} />}
-                label="Availability"
-                value="Open to Opportunities"
-                iconColor="text-cyan-500 dark:text-cyan-400"
-                gradient="from-cyan-400 via-blue-500 to-violet-500"
-              />
-            </div>
+                {skill}
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* ================= BUTTONS ================= */}
+
+        <div
+          className="
+            about-item
+            mt-10
+            flex
+            flex-wrap
+            gap-4
+          "
+        >
+          {/* RESUME */}
+
+          <a
+            href="/resume.pdf"
+            download
+            className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              bg-gradient-to-r
+              from-blue-500
+              via-violet-500
+              to-purple-500
+              px-6
+              py-3.5
+              text-sm
+              font-medium
+              text-white
+              shadow-lg
+              shadow-blue-500/20
+              transition-all
+              duration-300
+              hover:-translate-y-1
+              hover:shadow-blue-500/30
+            "
+          >
+            <Download size={18} />
+            Download Resume
+            <ArrowUpRight size={17} />
+          </a>
+
+          {/* CONTACT */}
+
+          <a
+            href="#contact"
+            className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-blue-400/60
+              px-6
+              py-3.5
+              text-sm
+              font-medium
+              text-white
+              transition-all
+              duration-300
+              hover:-translate-y-1
+              hover:bg-blue-500/10
+            "
+          >
+            <Mail size={18} />
+            Get In Touch
+          </a>
         </div>
       </div>
     </section>
@@ -2318,146 +3055,33 @@ export default function AboutIntro() {
 }
 
 /* ========================================================= */
-/* GRADIENT LINE */
+/* INFO ITEM */
 /* ========================================================= */
 
-function GradientLine({ gradient }) {
-  return (
-    <span
-      className={`
-        h-2
-        w-12
-        rounded-full
-        bg-gradient-to-r
-        ${gradient}
-        animate-gradient
-      `}
-      style={{ backgroundSize: "200% 200%" }}
-    />
-  );
-}
-
-/* ========================================================= */
-/* INFO CARD */
-/* ========================================================= */
-
-function InfoCard({ icon, label, value, iconColor, gradient }) {
+function InfoItem({ icon, title, subtitle, color }) {
   return (
     <div
       className="
-        gradient-border
-        rounded-2xl
-        p-[1.5px]
+        flex
+        items-center
+        gap-4
+        border-white/10
+        sm:border-r
+        sm:last:border-r-0
       "
     >
-      <div
-        className="
-          group
-          relative
-          h-full
-          overflow-hidden
-          rounded-[15px]
-           bg-[var(--surface)]
-          p-4
-          transition-all
-          duration-500
-          hover:-translate-y-1
-          
-        "
-      >
-        {/* TOP */}
+      <div className={`${color} shrink-0`}>
+        {icon}
+      </div>
 
-        <div className="flex items-start justify-between">
-          <div
-            className={`
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
-              rounded-xl
-              bg-neutral-100
-              ${iconColor}
-              dark:bg-[#1a1a1a]
-            `}
-          >
-            {icon}
-          </div>
-
-          <ArrowUpRight
-            size={17}
-            className="
-              text-neutral-600
-              transition-all
-              duration-300
-              group-hover:-translate-y-1
-              group-hover:translate-x-1
-              dark:text-neutral-400
-            "
-          />
-        </div>
-
-        {/* LABEL */}
-
-        <p
-          className="
-            mt-4
-            text-[9px]
-            font-semibold
-            uppercase
-            tracking-[0.25em]
-            text-neutral-600
-            dark:text-neutral-400
-          "
-        >
-          {label}
-        </p>
-
-        {/* VALUE */}
-
-        <h3
-          className="
-            mt-1.5
-            text-sm
-            font-medium
-            md:text-[15px]
-          "
-        >
-          <span
-            className="
-              bg-gradient-to-r
-              from-fuchsia-600
-              via-cyan-600
-              to-emerald-600
-              bg-clip-text
-              text-transparent
-              animate-gradient
-              dark:from-fuchsia-400
-              dark:via-cyan-300
-              dark:to-emerald-300
-            "
-            style={{ backgroundSize: "200% 200%" }}
-          >
-            {value}
-          </span>
+      <div>
+        <h3 className="text-base font-semibold text-white sm:text-lg">
+          {title}
         </h3>
 
-        {/* CONTINUOUS CARD GRADIENT */}
-
-        <div
-          className={`
-            pointer-events-none
-            absolute
-            bottom-0
-            left-0
-            h-[3px]
-            w-full
-            bg-gradient-to-r
-            ${gradient}
-            animate-gradient
-          `}
-          style={{ backgroundSize: "200% 200%" }}
-        />
+        <p className="mt-1 text-sm text-neutral-400">
+          {subtitle}
+        </p>
       </div>
     </div>
   );
