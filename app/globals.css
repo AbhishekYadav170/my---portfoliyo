@@ -1,259 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import "tailwindcss";
-
-:root{
-  --bg:#F8F7F4;
-  --surface:#FFFFFF;
-  --text:#111111;
-  --muted:#6B7280;
-  --border:#E5E2DC;
-
-  --accent:#7C5CFC;
-  --accent-light:#A78BFA;
-}
-
-
-.dark{
-  --bg:#090909;
-  --surface:#151515;
-  --text:#f5f5f5;
-  --muted:#9ca3af;
-  --border:#2a2a2a;
-}
-
-
-header{
-    transition:
-    background .4s ease,
-    backdrop-filter .4s ease,
-    box-shadow .4s ease;
-}
-
-header:hover{
-    background:rgba(255,255,255,.82);
-    backdrop-filter:blur(24px);
-    box-shadow:0 10px 40px rgba(0,0,0,.04);
-}
-
-
-h1, span, h3{
-  font-family: "jetBrains Mono", monospace;
-}
-
-h2, p, h4{
-  font-family: "Inter", sans-serif;
-}
-
-
-html,
-body{
-    cursor:none;
-    scroll-behavior:smooth;
-    overflow-x:hidden;
-
-    background:var(--bg);
-    color:var(--text);
-
-    transition:
-      background .45s ease,
-      color .45s ease;
-}
-
-body{
-    background:
-      radial-gradient(circle at top,#ffffff 0%,#F8F7F4 45%,#F3F2EF 100%);
-}
-
-.dark body{
-    background:
-      radial-gradient(circle at top,#181818 0%,#0f0f0f 45%,#090909 100%);
-}
-
-
-a,
-button,
-.story-line {
-  cursor: none;
-}
-
-
-@keyframes marquee {
-
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-
-}
-
-.animate-marquee {
-
-  width: max-content;
-
-  animation: marquee 25s linear infinite;
-
-}
-
-.animate-marquee:hover {
-
-  animation-play-state: paused;
-
-}
-
-.story-line{
-
-    position:relative;
-
-    display:inline-block;
-
-    transition:
-        transform .55s cubic-bezier(.22,1,.36,1),
-        color .35s ease,
-        opacity .35s ease;
-
-    transform-origin:left center;
-
-    will-change:transform;
-
-}
-
-.story-line:hover{
-
-    transform:translateX(22px) scale(1.015);
-    color:var(--accent);
-     letter-spacing:-0.04em;
-
-}
-
-.story-line::after{
-
-content:"";
-
-position:absolute;
-
-left:0;
-
-bottom:-12px;
-
-width:0;
-
-height:2px;
-
-background:#111;
-
-transition:width .45s ease;
-
-}
-
-.story-line:hover::after{
-
-width:100%;
-
-}
-
-::selection{
-    background:#111;
-    color:white;
-}
-
-::-webkit-scrollbar{
-    width:8px;
-    background:linear-gradient(
-        180deg,
-         #DDD5CA,
-       #BEB3A5
-    );
-}
-
-::-webkit-scrollbar-track{
-    background:#F3F2EF;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#CFC8BD;
-    border-radius:999px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#AFA79B;
-}
-
-img{
-    user-select:none;
-    -webkit-user-drag:none;
-    display:block;
-    max-width:100%;
-}
-
-a,
-button
-{
-    transition:all .35s cubic-bezier(.22,1,.36,1);
-}
-img{
-  transition:
-        transform .6s cubic-bezier(.22,1,.36,1),
-        filter .6s cubic-bezier(.22,1,.36,1);
-}
-
-section{
-    position:relative;
-    z-index:1;
-}
-
-
-
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient {
-  background-size: 250% 250%;
-  animation: gradientMove 4s ease infinite;
-}
- 
-
-
-.gradient-border {
-  position: relative;
-  background: linear-gradient(
-    90deg,
-    #ff00cc,
-    #7928ff,
-    #00e5ff,
-    #00ff88,
-    #ffe600,
-    #ff4d00,
-    #ff00cc
-  );
-
-  background-size: 400% 400%;
-  animation: gradientMove 5s ease infinite;
-} 
-  */
-
-
-
-/* 
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-@import "tailwindcss"; 
-
 /* ============================= */
 /* THEME */
 /* ============================= */
@@ -605,4 +349,39 @@ section {
   border-radius: 22px;
   overflow: hidden;
   background: var(--surface);
+}
+
+
+.education-gradient-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+
+  background: linear-gradient(
+    90deg,
+    #00ff88,
+    #00e5ff,
+    #2563eb,
+    #8b5cf6,
+    #ff0066,
+    #ff00cc,
+    #00ff88
+  );
+
+  background-size: 400% 100%;
+  animation: educationGradientMove 4s linear infinite;
+}
+
+@keyframes educationGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }

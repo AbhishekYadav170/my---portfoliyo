@@ -1687,7 +1687,7 @@ export default function Education() {
               >
 
                 {/* CONTINUOUS GRADIENT */}
-
+{/* 
                 <div
                   className="
                     absolute
@@ -1703,7 +1703,9 @@ export default function Education() {
                       #00ff88
                     )]
                   "
-                />
+                /> */}
+
+                <div className="education-gradient-border" />
 
                 {/* CARD */}
 
