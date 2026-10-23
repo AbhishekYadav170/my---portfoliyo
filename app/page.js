@@ -259,9 +259,70 @@
 
 
 
+// "use client";
+
+// import InfiniteCarousel from "@/components/InfiniteCarousel";
+// import AboutIntro from "@/components/about/AboutIntro";
+// import SkillsMarquee from "@/components/about/SkillsMarquee";
+// import Projects from "@/components/Projects";
+// import Education from "@/components/about/Education";
+// import ContactCTA from "@/components/about/ContactCTA";
+// import Services from "@/components/about/Services";
+
+// import { projects } from "@/data/projects";
+
+// export default function Home() {
+//   return (
+//     <main className="w-full overflow-x-hidden">
+
+//       {/* ================= HOME ================= */}
+//       <section id="home">
+//         <InfiniteCarousel projects={projects} />
+//       </section>
+
+//       {/* ================= ABOUT ================= */}
+//       <section id="about">
+//         <AboutIntro />
+//       </section>
+
+//       {/* ================= SKILLS ================= */}
+//       <section id="skills">
+//         <SkillsMarquee />
+//       </section>
+
+//       {/* ================= PROJECTS ================= */}
+//       <section id="projects">
+//         <Projects />
+//       </section>
+
+//       {/* ================= EDUCATION ================= */}
+//       <section id="education">
+//         <Education />
+//       </section>
+
+//       {/* ================= SERVICES ================= */}
+//       <section id="services">
+//         <Services />
+//       </section>
+
+//       {/* ================= CONTACT ================= */}
+//       <section id="contact">
+//         <ContactCTA />
+//       </section>
+
+//     </main>
+//   );
+// }
+
+
+
+
+
+
+
+
 "use client";
 
-import InfiniteCarousel from "@/components/InfiniteCarousel";
 import AboutIntro from "@/components/about/AboutIntro";
 import SkillsMarquee from "@/components/about/SkillsMarquee";
 import Projects from "@/components/Projects";
@@ -269,47 +330,38 @@ import Education from "@/components/about/Education";
 import ContactCTA from "@/components/about/ContactCTA";
 import Services from "@/components/about/Services";
 
-import { projects } from "@/data/projects";
-
 export default function Home() {
   return (
     <main className="w-full overflow-x-hidden">
-
-      {/* ================= HOME ================= */}
-      <section id="home">
-        <InfiniteCarousel projects={projects} />
-      </section>
-
-      {/* ================= ABOUT ================= */}
+      {/* ABOUT */}
       <section id="about">
         <AboutIntro />
       </section>
 
-      {/* ================= SKILLS ================= */}
+      {/* SKILLS */}
       <section id="skills">
         <SkillsMarquee />
       </section>
 
-      {/* ================= PROJECTS ================= */}
+      {/* PROJECTS */}
       <section id="projects">
         <Projects />
       </section>
 
-      {/* ================= EDUCATION ================= */}
+      {/* EDUCATION */}
       <section id="education">
         <Education />
       </section>
 
-      {/* ================= SERVICES ================= */}
+      {/* SERVICES */}
       <section id="services">
         <Services />
       </section>
 
-      {/* ================= CONTACT ================= */}
+      {/* CONTACT */}
       <section id="contact">
         <ContactCTA />
       </section>
-
     </main>
   );
 }
