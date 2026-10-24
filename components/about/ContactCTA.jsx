@@ -41,7 +41,7 @@ const contactLinks = [
   {
     label: "Phone",
     value: "Call me",
-    href: "tel:+91XXXXXXXXXX",
+    href: "tel:+918840214017",
     type: "icon",
     icon: Phone,
     external: false,
